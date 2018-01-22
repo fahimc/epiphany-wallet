@@ -1,0 +1,4 @@
+[submodule "vue-component-creator"]
+	path = vue-component-creator
+	url = https://github.com/fahimc/vue-component-creator.git
+	branch = master
