@@ -17,7 +17,7 @@ export default {
         console.log(data);
         if(!data.error)
         {
-
+            this.$router.push('/home');
         }
     }
   }
