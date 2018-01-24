@@ -20,15 +20,14 @@ const router = new Router({
   ]
 });
 
-/*
+
 router.beforeEach((to, from,next) => {
-  console.log(from)
     if (!Store.address && to.name !== 'Login') {
         next(false);
     } else {
         next()
     }
 });
-*/
+/**/
 
 export default router;
