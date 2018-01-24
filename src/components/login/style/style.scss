@@ -5,8 +5,16 @@
   top: 50%;
   transform: translate(-50%, -50%);
   left: 50%;
+  h1{
+    font-size: 1.5rem;
+  }
   input {
     text-align: center;
-    color: #333;
+   }
+   .form-control::placeholder{
+     opacity: 0.8;
+  }
+  small{
+    color: #333!important;
   }
 }

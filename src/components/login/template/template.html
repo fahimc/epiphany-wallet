@@ -1,13 +1,13 @@
 <div class="login">
   <img src="static/img/epiphany-logo.png">
-  <h1>Login into your Epiphany Wallet</h1>
+  <h1 class="text-light">Login into your Epiphany Wallet</h1>
   <form>
     <div class="form-group">
-      <input v-model="privatekey" type="text" class="form-control" id="privatekey" aria-describedby="private key" placeholder="private key">
+      <input v-model="privatekey" type="text" class="form-control text-dark" id="privatekey" aria-describedby="private key" placeholder="private key">
       <small id="emailHelp" class="form-text text-muted">We'll never share your private key.</small>
     </div>
     <a href="#">
-    <button type="button" class="btn btn-primary" v-on:click="login()">Login</button>
+    <button type="button" class="btn btn-info" v-on:click="login()">Login</button>
     </a>
   </form>
 </div>

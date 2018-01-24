@@ -1,4 +1,8 @@
+@import 'fonts';
 @import 'color_palette';
 body{
   background-color: $backgroundColorDark;
+  .container {
+    height: 100vh;
+  }
 }

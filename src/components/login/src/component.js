@@ -1,4 +1,5 @@
 import WalletService from '../../../service/walletservice.js';
+import Store from '../../../model/model.js';
 
 export default {
   name: 'login',
@@ -13,9 +14,11 @@ export default {
           WalletService.login(this.privatekey,this.onLogin.bind(this));
       }
     },
-    onLogin(data){
-        console.log(data);
-        if(!data.error)
+    onLogin(event){
+        console.log(event);
+        Store.balance = event.data.balance;
+        Store.address = event.data.address;
+        if(!event.error)
         {
             this.$router.push('/home');
         }
