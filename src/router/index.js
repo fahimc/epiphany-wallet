@@ -23,7 +23,7 @@ const router = new Router({
 
 router.beforeEach((to, from,next) => {
     if (!Store.address && to.name !== 'Login') {
-        next(false);
+        next('/');
     } else {
         next()
     }

@@ -1,6 +1,7 @@
 import Store from '../../../model/model.js';
 import WalletService from '../../../service/walletservice.js';
 import Util from '../../../service/util.js';
+if (!window.web3) window.web3 = new Web3(Web3.currentProvider);
 
 export default {
   name: 'home',
@@ -19,11 +20,12 @@ export default {
         if(!item.data)return;
         let obj = {
           date: Util.formatDate(new Date(item.timeStamp * 1000)),
-          transfer: (item.type == 'SENT' ? '-' : '') +  Util.currencyFormatted(Number(item.data.params[1].value)),
+          transfer: (item.type == 'SENT' ? '-' : '') +  Util.currencyFormatted(Util.convertCurrencyValue(Number(item.data.params[1].value))),
           type: item.type,
           transferClass:item.type == 'SENT' ? 'text-danger' : 'text-primary',
-          fee: item.gasUsed,
+          fee: web3.fromWei(item.gasUsed * item.gasPrice),
           hash: item.hash,
+          link: '//etherscan.io/tx/' + item.hash,
           item: item
         }
         this.transactions.push(obj);
@@ -31,7 +33,7 @@ export default {
     }
   },
   created() {
-    this.balance = Util.currencyFormatted(Number(this.balance));
+    this.balance = Util.currencyFormatted(Util.convertCurrencyValue(Number(this.balance)));
     WalletService.getTransactions(Store.address,this.onTransaction.bind(this));
     //WalletService.getTransactions('0x8B3E95e721AaCC68e235c95589e3600d0C81d045', this.onTransaction.bind(this));
   },

@@ -5,17 +5,20 @@ let Wallet;
 let TokenABI = require('../data/eny_abi.json');
 let Web3 = require('web3');
 let abiDecoder = require('abi-decoder');
-let web3 = new Web3(Web3.currentProvider);
+let web3 = new Web3(Web3.currentProvider || 'https://etherscan..io/');
+var getJSON = require('get-json');
 const EthereumService = {
   providers: null,
   //NETWORK: 'rinkeby',
   NETWORK: '',
   provider: null,
+  ETHERSCAN_API:'1B927KSENR1446GUNWKG12KUIXRCMS2181',
   // EPIPHANY_CONTRACT: '0xb16B425FD68E3a87bfF2226b7092Bd1e00053e9e',
   EPIPHANY_CONTRACT: '0x1b413506FC42E2F04a4E8c57710F850b234D6653', //LIVE
   init() {
     abiDecoder.addABI(TokenABI);
     this.setNetwork();
+    //this.getTransactionList('0xeDDf29Fa1fb8ADcbaCF1Ef3691604Bdb65341Ac6',this.EPIPHANY_CONTRACT);
   },
   setNetwork() {
     this.providers = ethers.providers;
@@ -42,13 +45,17 @@ const EthereumService = {
           item.data = abiDecoder.decodeMethod(item.input);
           if(!item.data)return;
           item.input = '';
-          console.log(item.to,item.from,account,'------');
-          console.log(item.data.params[1].value,'------');
+          console.log(ethers.filter);
+
+         // getJSON('https://api.etherscan.io/api?module=transaction&action=gettxreceiptstatus&txhash='+ item.hash +'&apikey=1B927KSENR1446GUNWKG12KUIXRCMS2181',(error,data)=>{console.log(data)});
+         // getJSON(`https://api.etherscan.io/api?module=proxy&action=eth_getTransactionReceipt&txhash=${item.hash}&apikey=${this.ETHERSCAN_API}`,(error,data)=>{console.log(data)});
           //if (item.to.toLowerCase() === account.toLowerCase()) {
           if (item.data.params[0].value.toLowerCase() === account.toLowerCase()) {
+            //
             item.type = 'RECEIVED';
             epiphanyCollection.push(item);
           } else if (item.from.toLowerCase() === account.toLowerCase()) {
+            //web3.eth.getTransactionReceipt(item.hash).then((data)=>{console.log(data)});
             item.type = 'SENT';
             epiphanyCollection.push(item);
           }

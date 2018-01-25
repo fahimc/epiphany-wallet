@@ -28,7 +28,7 @@
     <small>BALANCE</small>
     <p><span>{{balance}}</span> <span class="symbol">ENY</span></p>
     <div class="button-holder">
-      <a href="#" class="btn btn-info btn-lg bg-primary text-light">Send Coins</a><a href="#" class="btn btn-info btn-lg bg-primary text-light">Request Coins</a>
+      <a href="#" class="btn btn-info btn-lg bg-primary text-light">Make a Payment</a><a href="#" class="btn btn-info btn-lg bg-primary text-light">Request Payment</a>
     </div>
   </div>
   <div class="list">
@@ -44,7 +44,9 @@
         <p class="mb-1 text-muted">{{item.type}}</p>
         <p><small class="text-muted">{{item.fee}}<small> ETH</small>(transaction fee)</small>
         </p>
+        <a v-bind:href="item.link" target="_blank">
         <p><small class="text-primary">MORE INFO</small></p>
+        </a>
       </a>
     </div>
   </div>
