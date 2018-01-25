@@ -4,6 +4,7 @@ let utils = ethers.utils;
 let Wallet;
 let TokenABI = require('../data/eny_abi.json');
 let Web3 = require('web3');
+let abiDecoder = require('abi-decoder');
 let web3 = new Web3(Web3.currentProvider);
 const EthereumService = {
   providers: null,
@@ -13,7 +14,7 @@ const EthereumService = {
   // EPIPHANY_CONTRACT: '0xb16B425FD68E3a87bfF2226b7092Bd1e00053e9e',
   EPIPHANY_CONTRACT: '0x1b413506FC42E2F04a4E8c57710F850b234D6653', //LIVE
   init() {
-    this.getTransactionList('0x1b413506fc42e2f04a4e8c57710f850b234d6653')
+    abiDecoder.addABI(TokenABI);
     this.setNetwork();
   },
   setNetwork() {
@@ -33,17 +34,31 @@ const EthereumService = {
     contract.balanceOf(wallet.address).then(this.onBalance.bind(this, callback, wallet));
 
   },
-  getTransactionList(account, callback) {
-    EtherScan.account.txlist(account).then((data) => {
+  getTransactionList(account,transaction, callback) {
+    EtherScan.account.txlist(transaction).then((data) => {
       if (data.result) {
-        let collection = data.result.filter((item) => {
-          console.log(web3.toAscii(item.input));
-          if (item.contractAddress.toLowerCase() == this.EPIPHANY_CONTRACT.toLowerCase()) return true;
+        let epiphanyCollection = [];
+        data.result.forEach((item) => {
+          item.data = abiDecoder.decodeMethod(item.input);
+          if(!item.data)return;
+          item.input = '';
+          console.log(item.to,item.from,account,'------');
+          console.log(item.data.params[1].value,'------');
+          //if (item.to.toLowerCase() === account.toLowerCase()) {
+          if (item.data.params[0].value.toLowerCase() === account.toLowerCase()) {
+            item.type = 'RECEIVED';
+            epiphanyCollection.push(item);
+          } else if (item.from.toLowerCase() === account.toLowerCase()) {
+            item.type = 'SENT';
+            epiphanyCollection.push(item);
+          }
         });
 
-        if (callback) callback(collection);
+        if (callback) callback(epiphanyCollection);
+      }else{
+        if (callback) callback();
       }
-    });
+    }).catch((err) => { if (callback) callback()});
   },
   toAscii(hex) {
     var str = '',

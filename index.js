@@ -25,7 +25,7 @@ const Server = {
   onTransactionList(req, res) {
     let response = this.getResponseObject();
     if (req.body.address) {
-      EthereumService.getTransactionList(req.body.address, (data) => {
+      EthereumService.getTransactionList(req.body.address, EthereumService.EPIPHANY_CONTRACT,(data) => {
         response.data = data;
         res.json(response);
       });

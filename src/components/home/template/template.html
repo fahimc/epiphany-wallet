@@ -36,33 +36,13 @@
       <div class="heading-holder bg-dark text-light">
         <h2>Recent Transactions</h2>
       </div>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start bg-light">
+      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start bg-light" v-for="item in transactions">
         <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1 text-primary">20 <small>ENY</small></h5>
-          <small>12:00pm 01/01/2018</small>
+          <h5 class="mb-1 text-primary"  v-bind:class="item.transferClass">{{item.transfer}} <small>ENY</small></h5>
+          <small>{{item.date}}</small>
         </div>
-        <p class="mb-1 text-muted">Received</p>
-        <p><small class="text-muted">0.002161561 <small>ETH</small>(transaction fee)</small>
-        </p>
-        <p><small class="text-primary">MORE INFO</small></p>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start bg-light">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1 text-primary">100 <small>ENY</small></h5>
-          <small>9:00am 01/01/2018</small>
-        </div>
-        <p class="mb-1 text-muted">Received</p>
-        <p><small class="text-muted">0.002161561 <small>ETH</small>(transaction fee)</small>
-        </p>
-        <p><small class="text-primary">MORE INFO</small></p>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start bg-light">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1 text-danger">-10 <small>ENY</small></h5>
-          <small>29/12/2017</small>
-        </div>
-        <p class="mb-1 text-muted">Sent</p>
-        <p><small class="text-muted">0.002161561 <small>ETH</small>(transaction fee)</small>
+        <p class="mb-1 text-muted">{{item.type}}</p>
+        <p><small class="text-muted">{{item.fee}}<small> ETH</small>(transaction fee)</small>
         </p>
         <p><small class="text-primary">MORE INFO</small></p>
       </a>
