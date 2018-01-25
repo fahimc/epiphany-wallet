@@ -15,7 +15,15 @@ const Server = {
     app.use(this.onBeforeRequest.bind(this));
     app.use('/', express.static('dist'));
     app.post('/login', this.onLogin.bind(this));
+    app.post('/create', this.createWallet.bind(this));
     app.post('/transactionlist', this.onTransactionList.bind(this));
+  },
+  createWallet(req, res) {
+    let response = this.getResponseObject();
+    EthereumService.createNewWallet((wallet) => {
+      response.data = wallet;
+      res.json(response);
+    });
   },
   onBeforeRequest(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -25,7 +33,7 @@ const Server = {
   onTransactionList(req, res) {
     let response = this.getResponseObject();
     if (req.body.address) {
-      EthereumService.getTransactionList(req.body.address, EthereumService.EPIPHANY_CONTRACT,(data) => {
+      EthereumService.getTransactionList(req.body.address, EthereumService.EPIPHANY_CONTRACT, (data) => {
         response.data = data;
         res.json(response);
       });
@@ -57,8 +65,8 @@ const Server = {
     };
   },
   start() {
-    app.listen(3000, () => console.log('Example app listening on port 3000!'));
-   // app.listen(8080, () => console.log('Example app listening on port 8080!'));
+    //app.listen(3000, () => console.log('Example app listening on port 3000!'));
+    app.listen(8080, () => console.log('Example app listening on port 8080!'));
   }
 };
 Server.init();

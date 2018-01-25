@@ -12,12 +12,13 @@ const EthereumService = {
   //NETWORK: 'rinkeby',
   NETWORK: '',
   provider: null,
-  ETHERSCAN_API:'1B927KSENR1446GUNWKG12KUIXRCMS2181',
+  ETHERSCAN_API: '1B927KSENR1446GUNWKG12KUIXRCMS2181',
   // EPIPHANY_CONTRACT: '0xb16B425FD68E3a87bfF2226b7092Bd1e00053e9e',
   EPIPHANY_CONTRACT: '0x1b413506FC42E2F04a4E8c57710F850b234D6653', //LIVE
   init() {
     abiDecoder.addABI(TokenABI);
     this.setNetwork();
+    this.createNewWallet();
     //this.getTransactionList('0xeDDf29Fa1fb8ADcbaCF1Ef3691604Bdb65341Ac6',this.EPIPHANY_CONTRACT);
   },
   setNetwork() {
@@ -30,6 +31,21 @@ const EthereumService = {
 
     Wallet = ethers.Wallet;
   },
+  createNewWallet(callback) {
+ /*
+    let wallet = {
+      privateKey: '0xa230e57a47107e5abf2ccf87844d59997177b7e28c6da6aaa6d498ee8610d814',
+      provider: null,
+      defaultGasLimit: null,
+      address: '0x70b212Dc51cCbe75e4E58BAcd17C24A61b1148B0',
+      sign: [Function],
+      mnemonic: 'trap rare pizza organ impact outside artefact program media sheriff daughter coffee',
+      path: 'm/44\'/60\'/0\'/0/0'
+    }
+   */
+    let wallet = Wallet.createRandom();
+    if (callback) callback(wallet);
+  },
   login(key, callback) {
     if (key.substring(0, 1) !== '0x') key = '0x' + key;
     let wallet = new Wallet(key);
@@ -37,35 +53,34 @@ const EthereumService = {
     contract.balanceOf(wallet.address).then(this.onBalance.bind(this, callback, wallet));
 
   },
-  getTransactionList(account,transaction, callback) {
+  getTransactionList(account, transaction, callback) {
     EtherScan.account.txlist(transaction).then((data) => {
       if (data.result) {
         let epiphanyCollection = [];
         data.result.forEach((item) => {
           item.data = abiDecoder.decodeMethod(item.input);
-          if(!item.data)return;
+          if (!item.data) return;
           item.input = '';
-          console.log(ethers.filter);
 
-         // getJSON('https://api.etherscan.io/api?module=transaction&action=gettxreceiptstatus&txhash='+ item.hash +'&apikey=1B927KSENR1446GUNWKG12KUIXRCMS2181',(error,data)=>{console.log(data)});
-         // getJSON(`https://api.etherscan.io/api?module=proxy&action=eth_getTransactionReceipt&txhash=${item.hash}&apikey=${this.ETHERSCAN_API}`,(error,data)=>{console.log(data)});
-          //if (item.to.toLowerCase() === account.toLowerCase()) {
           if (item.data.params[0].value.toLowerCase() === account.toLowerCase()) {
             //
             item.type = 'RECEIVED';
             epiphanyCollection.push(item);
           } else if (item.from.toLowerCase() === account.toLowerCase()) {
-            //web3.eth.getTransactionReceipt(item.hash).then((data)=>{console.log(data)});
             item.type = 'SENT';
             epiphanyCollection.push(item);
           }
         });
 
         if (callback) callback(epiphanyCollection);
-      }else{
+      } else {
         if (callback) callback();
       }
-    }).catch((err) => { if (callback) callback()});
+    }).catch((err) => { if (callback) callback() });
+  },
+  callEtherScan() {
+    // getJSON('https://api.etherscan.io/api?module=transaction&action=gettxreceiptstatus&txhash='+ item.hash +'&apikey=1B927KSENR1446GUNWKG12KUIXRCMS2181',(error,data)=>{console.log(data)});
+    // getJSON(`https://api.etherscan.io/api?module=proxy&action=eth_getTransactionReceipt&txhash=${item.hash}&apikey=${this.ETHERSCAN_API}`,(error,data)=>{console.log(data)});
   },
   toAscii(hex) {
     var str = '',

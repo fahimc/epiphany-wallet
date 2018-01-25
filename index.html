@@ -44,6 +44,8 @@
           if (file.match(/\.(js|css)$/)) { %>
     <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
     <script type="text/javascript" src="static/lib/web3/web3.min.js"></script>
+    <script type="text/javascript" src="static/lib/jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="static/lib/bootstrap-material-design-4.0.0-beta.4/js/bootstrap-material-design.min.js"></script>
   </head>
   <body>
     <noscript>
