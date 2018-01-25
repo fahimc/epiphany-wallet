@@ -1,6 +1,8 @@
 const WalletService = {
+  //SERVICE_URL:'http://localhost:3000',
+  SERVICE_URL:'http://198.58.105.111:8080',//LIVE
   login(key,callback) {
-    this.send( 'http://localhost:3000/login',"key=" + key,callback);
+    this.send(this.SERVICE_URL + '/login' ,"key=" + key,callback);
   },
   send(url,params,callback){
     var xhr = new XMLHttpRequest();
@@ -16,7 +18,7 @@ const WalletService = {
     xhr.send(params);
   },
   getTransactions(address,callback){
-    this.send( 'http://localhost:3000/transactionlist',"address=" + address,callback);
+    this.send(this.SERVICE_URL + '/transactionlist',"address=" + address,callback);
   }
 };
 module.exports = WalletService;
