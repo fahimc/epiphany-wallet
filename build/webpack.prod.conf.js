@@ -75,6 +75,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         './service-worker-prod.js'))}</script>`
     }),
      new HtmlWebpackPlugin({
+      title: 'epiphany wallet',
       favicon: 'favicon.ico'
     }),
     // split vendor js into its own file
