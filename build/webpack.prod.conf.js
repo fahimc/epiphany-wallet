@@ -61,6 +61,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         ? 'index.html'
         : config.build.index,
       template: 'index.html',
+      favicon: 'favicon.ico'
       inject: true,
       minify: {
         removeComments: true,
@@ -73,10 +74,6 @@ const webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency',
       serviceWorkerLoader: `<script>${loadMinified(path.join(__dirname,
         './service-worker-prod.js'))}</script>`
-    }),
-     new HtmlWebpackPlugin({
-      title: 'epiphany wallet',
-      favicon: 'favicon.ico'
     }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
