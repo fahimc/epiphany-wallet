@@ -74,6 +74,10 @@ const webpackConfig = merge(baseWebpackConfig, {
       serviceWorkerLoader: `<script>${loadMinified(path.join(__dirname,
         './service-worker-prod.js'))}</script>`
     }),
+     new HtmlWebpackPlugin({
+      title: 'favicon',
+      favicon: 'favicon.ico'
+    }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
