@@ -4,8 +4,10 @@ var app = express();
 const EthereumService = require('./server/service/ethereumservice.js');
 
 const Server = {
+  port:8080,
   init() {
     EthereumService.init();
+    this.port = EthereumService.PORT_NUMBER;
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     this.setRoutes();
@@ -66,7 +68,7 @@ const Server = {
   },
   start() {
     //app.listen(3000, () => console.log('Example app listening on port 3000!'));
-    app.listen(8080, () => console.log('Example app listening on port 8080!'));
+    app.listen(this.port , () => console.log('Example app listening on port ' + this.port ));
   }
 };
 Server.init();
