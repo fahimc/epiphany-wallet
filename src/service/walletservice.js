@@ -13,6 +13,10 @@ const WalletService = {
       if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
         // Request finished. Do processing here.
         if (callback) callback(JSON.parse(xhr.responseText));
+      }else if(xhr.readyState == XMLHttpRequest.DONE){
+        if (callback) callback({
+          error:1
+        });
       }
     }
     xhr.send(params);

@@ -117,8 +117,9 @@ const EthereumService = {
         return customSigner;
       },
       transfer(privateKey, toAddress, amountInENY, callback) {
-        let customSigner = this.getSigner(privateKey);
-        this.contract = new ethers.Contract(this.EPIPHANY_CONTRACT, TokenABI, customSigner);
+        let wallet = new ethers.Wallet(privateKey);
+        wallet.provider = this.provider;
+        this.contract = new ethers.Contract(this.EPIPHANY_CONTRACT, TokenABI, wallet);
         this.contract.transfer(toAddress, amountInENY).then((data) => {
           if (callback) callback(data);
         });

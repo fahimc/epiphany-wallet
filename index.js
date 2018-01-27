@@ -19,6 +19,21 @@ const Server = {
     app.post('/login', this.onLogin.bind(this));
     app.post('/create', this.createWallet.bind(this));
     app.post('/transactionlist', this.onTransactionList.bind(this));
+    app.post('/estimateTransfer', this.onEstimateTransfer.bind(this));
+  },
+  onEstimateTransfer(req, res) {
+    let response = this.getResponseObject();
+    //privateKey,funcName,params, callback
+    if (req.body.privateKey && req.body.toAddress && req.body.amount) {
+     EthereumService.getEstimate(req.body.privateKey,'transfer',[req.body.toAddress,req.body.amount],(data) => {
+      response.data = data;
+      res.json(response);
+    });
+   }else{
+      response.error = 'invalid info';
+      response.errorCode = 1;
+      res.json(response);
+   }
   },
   createWallet(req, res) {
     let response = this.getResponseObject();
