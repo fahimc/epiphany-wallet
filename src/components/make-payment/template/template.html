@@ -1,0 +1,30 @@
+<div class="make-payment">
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="wrapper" href="#" v-on:click="goBack" ><i class="fas fa-chevron-left text-light"></i></a>
+    <a class="navbar-brand" href="#">
+    <span>make payment</span>
+    </a>
+  </nav>
+  <!-- <img src="static/img/epiphany-logo.png"> -->
+  <div class="card text-white bg-info mb-3" style="margin-top: 10px;">
+  <div class="card-body">
+    <h5 class="card-title">Make a Payment to</h5>
+    <input v-model="toAddress" type="text" class="form-control text-light"  aria-describedby="private key" placeholder="address">
+  </div>
+</div>
+<div class="card text-white bg-info mb-3" style="margin-top: 10px;">
+  <div class="card-body">
+    <h5 class="card-title">The Amount to send</h5>
+    <input v-model="amount" type="number" class="form-control text-light" aria-describedby="private key" placeholder="amount (ENY)">
+  </div>
+</div>
+<div class="card text-white bg-info mb-3" style="margin-top: 10px;">
+  <div class="card-body">
+    <h5 class="card-title">Transaction cost</h5>
+    <label></label>
+  </div>
+</div>
+  <div class="form-group">
+    <button type="button" class="btn btn-info" v-on:click="">verify</button>
+  </div>
+</div>

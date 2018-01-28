@@ -1,6 +1,6 @@
 import WalletService from '../../../service/walletservice.js';
 import Store from '../../../model/model.js';
-import {EventBus} from '../../../event/event.js';
+import { EventBus } from '../../../event/event.js';
 
 export default {
   name: 'login',
@@ -19,23 +19,31 @@ export default {
       }
     },
     onLogin(event) {
-      console.log(event);
       if (!event.error) {
-      Store.balance = event.data.balance;
-      Store.address = event.data.address;
+        Store.balance = event.data.balance;
+        Store.address = event.data.address;
         this.$router.push('/home');
       } else {
-        Store.alertMessage = 'Cannot Connect to network. Please try again.';
-        EventBus.$emit('showAlert',{
-          message: Store.alertMessage,
-          typeClass:'alert-danger'
-        });
+        this.showAlert('Cannot Connect to network. Please try again.');
       }
     },
     onCreateWallet(event) {
-      // $('#create-modal').modal('toggle');
-      this.newWalletAddress = event.data.address;
-      this.newPrivateKey = event.data.privateKey;
+      if (!event.error) {
+        this.newWalletAddress = event.data.address;
+        this.newPrivateKey = event.data.privateKey;
+        $('#create-modal').modal('show');
+      } else {
+        this.showAlert('Cannot Connect to network. Please try again.');
+      }
+    },
+    showAlert(message) {
+        EventBus.$emit('showAlert', {
+          message: message,
+          typeClass: 'alert-danger'
+        });
+    },
+    onCreateClick(){
+       WalletService.createNewWallet(this.onCreateWallet.bind(this))
     }
   },
   mounted() {},
@@ -43,10 +51,5 @@ export default {
     $('#create-modal').modal({
       backdrop: false
     });
-    $('#create-modal').on('show.bs.modal', (e) => {
-      WalletService.createNewWallet(this.onCreateWallet.bind(this))
-      // do something...
-    });
-
   }
 };

@@ -1,0 +1,18 @@
+.make-payment{
+    text-align: center;
+  .form-control::placeholder {
+    text-align: center;
+    color: #e4e4e4;
+    //opacity: 0.8;
+  }
+  input {
+    text-align: center;
+    color: #fff;
+  }
+  small {
+    text-align: center;
+    color: #333!important;
+    margin-top: 0;
+  }
+}
+
