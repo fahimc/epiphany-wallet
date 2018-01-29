@@ -11,18 +11,27 @@
     font-size: 1.5rem;
   }
   input {
-   // text-align: center;
+    // text-align: center;
   }
   .form-control::placeholder {
     text-align: center;
     opacity: 0.8;
   }
   small {
-    color: #333!important;
+    color: #999!important;
   }
-  .modal{
-    p{
+  .modal {
+    p {
       word-wrap: break-word;
     }
+  }
+  select {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  form {
+    text-align: center;
   }
 }

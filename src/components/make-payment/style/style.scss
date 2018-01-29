@@ -1,21 +1,36 @@
-.make-payment{
-    text-align: center;
+.make-payment {
+  text-align: center;
   .form-control::placeholder {
     text-align: center;
-    color: #e4e4e4;
-    //opacity: 0.8;
+    color: #e4e4e4; //opacity: 0.8;
   }
   input {
     text-align: center;
     color: #fff;
+    &[type=number]::-webkit-inner-spin-button,
+    &[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
   small {
     text-align: center;
     color: #333!important;
     margin-top: 0;
   }
-  .btn:disabled{
+  .btn:disabled {
     color: #e4e4e4;
   }
+  section,
+  .transaction-info,
+  .form-back-button,
+  .verify-button {
+    display: none;
+    &.show {
+      display: block;
+    }
+    &.btn.show {
+      display: inline-block;
+    }
+  }
 }
-

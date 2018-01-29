@@ -45,6 +45,7 @@ const EthereumService = {
         this.contract.estimate[funcName].apply(null,params).then((data) => {
           //let gasCost = Number(data.toString());
           let gasEstimate = data;
+          console.log(data);
           this.provider.getGasPrice().then((price)=>{
             console.log('price',price.toString());
             console.log('gasEstimate',gasEstimate.toString());

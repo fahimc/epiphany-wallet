@@ -8,7 +8,8 @@ export default {
     return {
       privatekey: '',
       newWalletAddress: '',
-      newPrivateKey: ''
+      newPrivateKey: '',
+      network: 'main'
     }
   },
   methods: {
@@ -44,10 +45,15 @@ export default {
     },
     onCreateClick(){
        WalletService.createNewWallet(this.onCreateWallet.bind(this))
+    },
+    networkChanged(data){
+      console.log('networkChanged',this.network);
+      Store.network = this.network;
     }
   },
   mounted() {},
   created() {
+    $('#networkDropdown').dropdown();
     $('#create-modal').modal({
       backdrop: false
     });

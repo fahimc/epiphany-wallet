@@ -12,8 +12,12 @@ export default {
       transactionFee: '',
       balanceAfter: '',
       transactionClass: 'text-muted',
+      transactionShow: '',
+      formClass: 'show',
       verifyButtonDisabled: false,
       sendButtonDisabled: true,
+      formBackButtonClass: '',
+      formVerifyButtonClass: 'show',
     }
   },
   methods: {
@@ -43,18 +47,33 @@ export default {
       this.transactionFee = event.data.gasCostInEther + ' ETH';
       this.balanceAfter = event.data.balanceAfter + ' ETH';
       this.transactionClass = 'text-dark';
+      this.formBackButtonClass = 'show';
+      this.transactionShow = 'show';
+      this.formVerifyButtonClass = '';
+      this.formClass = '';
       if(event.data.status)
       {
         //disabled inputs
-        this.showSendButton();
+        this.activateSendButton();
       }
     },
-    showSendButton(){
+    activateSendButton(){
+      this.verifyButtonDisabled = true;
+      this.sendButtonDisabled = false;
+    },
+    disableSendButton(){
       this.verifyButtonDisabled = true;
       this.sendButtonDisabled = false;
     },
     sendTransaction(){
 
+    },
+    showForm(){
+      this.disableSendButton();
+      this.formBackButtonClass = '';
+      this.transactionShow = '';
+      this.formClass = 'show';
+      this.formVerifyButtonClass = 'show';
     }
   }
 };
