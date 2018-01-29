@@ -1,8 +1,7 @@
 var store = {
-  state: {
-    address: '',
-    balance: 1000,
-  },
+  address: '',
+  balance: 0,
+  privatekey: '',
   alertMessage: '',
   alertClass: 'alert-danger',
   alertId: 'main-alert',

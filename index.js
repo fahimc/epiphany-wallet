@@ -25,6 +25,7 @@ const Server = {
     let response = this.getResponseObject();
     //privateKey,funcName,params, callback
     if (req.body.privateKey && req.body.toAddress && req.body.amount) {
+      console.log('onEstimateTransfer',req.body.privateKey , req.body.toAddress , req.body.amount);
      EthereumService.getEstimate(req.body.privateKey,'transfer',[req.body.toAddress,req.body.amount],(data) => {
       response.data = data;
       res.json(response);

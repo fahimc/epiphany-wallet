@@ -1,3 +1,5 @@
+import { EventBus } from '../event/event.js';
+
 const Util = {
   currencyFormatted(amount) {
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -12,10 +14,19 @@ const Util = {
     var strTime = hours + ':' + minutes + ' ' + ampm;
     return date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear() + "  " + strTime;
   },
-  convertCurrencyValue(amount){
+  convertCurrencyValue(amount) {
     let decimal = 6;
     return amount / Math.pow(10, decimal);
+  },
+  showAlert(message) {
+    EventBus.$emit('showAlert', {
+      message: message,
+      typeClass: 'alert-danger'
+    });
+  },
+  hideAlert() {
+    EventBus.$emit('hideAlert');
   }
 };
 
-module.exports = Util;
+export default Util;

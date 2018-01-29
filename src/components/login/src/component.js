@@ -14,12 +14,12 @@ export default {
   methods: {
     login(event) {
       if (this.privatekey) {
-
         WalletService.login(this.privatekey.substring(2, this.privatekey.length), this.onLogin.bind(this));
       }
     },
     onLogin(event) {
       if (!event.error) {
+        Store.privatekey = this.privatekey;
         Store.balance = event.data.balance;
         Store.address = event.data.address;
         this.$router.push('/home');

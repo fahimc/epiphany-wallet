@@ -27,7 +27,7 @@ const EthereumService = {
       abiDecoder.addABI(TokenABI);
       this.setNetwork();
       this.initContract();
-      this.test();
+      //this.test();
       //this.createNewWallet();
       //this.getTransactionList('0xeDDf29Fa1fb8ADcbaCF1Ef3691604Bdb65341Ac6',this.EPIPHANY_CONTRACT);
     },
@@ -37,6 +37,7 @@ const EthereumService = {
         });
     },
     getEstimate(privateKey,funcName,params, callback) {
+      console.log();
         let wallet = new ethers.Wallet(privateKey);
         wallet.provider = this.provider;
         this.contract = new ethers.Contract(this.EPIPHANY_CONTRACT, TokenABI, wallet);
@@ -58,9 +59,9 @@ const EthereumService = {
                 status: (ether - gasCostInEther >= 0)
               });
             });
-            
+
           });
-          
+
         });
       },
       getBalance(privateKey, callback) {

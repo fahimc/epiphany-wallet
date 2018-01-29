@@ -15,9 +15,13 @@ export default {
          </button>
          </div>`;
       this.$el.innerHTML = template;
+    },
+    onHideAlert(){
+      this.$el.innerHTML = '';
     }
   },
   created() {
     EventBus.$on('showAlert', this.onShowAlert.bind(this));
+    EventBus.$on('hideAlert', this.onHideAlert.bind(this));
   }
 };

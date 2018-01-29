@@ -1,6 +1,6 @@
 const WalletService = {
-  //SERVICE_URL:'http://localhost:3000',
- SERVICE_URL: 'http://198.58.105.111:8080', //LIVE
+  SERVICE_URL:'http://localhost:3000',
+// SERVICE_URL: 'http://198.58.105.111:8080', //LIVE
   login(key, callback) {
     this.send(this.SERVICE_URL + '/login', "key=" + key, callback);
   },
@@ -26,6 +26,9 @@ const WalletService = {
   },
   createNewWallet(callback) {
     this.send(this.SERVICE_URL + '/create', null, callback);
+  },
+  estimateTransfer(privateKey,to,amount,callback){
+    this.send(this.SERVICE_URL + '/estimateTransfer', `privateKey=${privateKey}&toAddress=${to}&amount=${amount}` , callback);
   }
 };
 module.exports = WalletService;

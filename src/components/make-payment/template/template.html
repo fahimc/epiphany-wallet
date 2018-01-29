@@ -18,13 +18,19 @@
     <input v-model="amount" type="number" class="form-control text-light" aria-describedby="private key" placeholder="amount (ENY)">
   </div>
 </div>
-<div class="card text-white bg-info mb-3" style="margin-top: 10px;">
+<div class="card bg-muted mb-3" v-bind:class="transactionClass" style="margin-top: 10px;">
   <div class="card-body">
-    <h5 class="card-title">Transaction cost</h5>
-    <label></label>
+    <h5 class="card-title">Transaction Information</h5>
+    <p><strong>Current Balance</strong></p>
+    <p>{{currentBalance}}</p>
+    <p><strong>Transaction Fee</strong></p>
+    <p>{{transactionFee}}</p>
+    <p><strong>Balance After</strong></p>
+    <p>{{balanceAfter}}</p>
   </div>
 </div>
   <div class="form-group">
-    <button type="button" class="btn btn-info" v-on:click="">verify</button>
+    <button type="button" class="btn btn-info" v-on:click="checkCost" v-bind:disabled="verifyButtonDisabled">verify</button>
+    <button type="button" class="btn btn-info" v-on:click="sendTransaction" v-bind:disabled="sendButtonDisabled">send</button>
   </div>
 </div>
