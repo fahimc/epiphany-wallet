@@ -1,8 +1,8 @@
 import Store from '../model/model.js';
 
 const WalletService = {
-  SERVICE_URL:'http://localhost:3000',
-// SERVICE_URL: 'http://198.58.105.111:8080', //LIVE
+  //SERVICE_URL:'http://localhost:3000',
+  SERVICE_URL: 'http://198.58.105.111:8080', //LIVE
   login(key, callback) {
     this.send(this.SERVICE_URL + '/login', "key=" + key + `&network=${Store.network}`, callback);
   },
@@ -31,6 +31,9 @@ const WalletService = {
   },
   estimateTransfer(privateKey,to,amount,callback){
     this.send(this.SERVICE_URL + '/estimateTransfer', `privateKey=${privateKey}&toAddress=${to}&amount=${amount}&network=${Store.network}` , callback);
+  },
+  sendTransfer(privateKey,to,amount,callback){
+    this.send(this.SERVICE_URL + '/sendTransfer', `privateKey=${privateKey}&toAddress=${to}&amount=${amount}&network=${Store.network}` , callback);
   }
 };
 export default WalletService;

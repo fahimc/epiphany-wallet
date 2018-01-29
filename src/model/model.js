@@ -1,4 +1,5 @@
 var store = {
+  network: '',
   address: '',
   balance: 0,
   privatekey: '',

@@ -20,11 +20,37 @@ const Server = {
     app.post('/create', this.createWallet.bind(this));
     app.post('/transactionlist', this.onTransactionList.bind(this));
     app.post('/estimateTransfer', this.onEstimateTransfer.bind(this));
+    app.post('/sendTransfer', this.onSendTransfer.bind(this));
+  },
+  onSendTransfer(req, res) {
+    let response = this.getResponseObject();
+    //privateKey,funcName,params, callback
+    if (req.body.privateKey && req.body.toAddress && req.body.amount) {
+      this.setNetworkSetting(req.body);
+      console.log('onSendTransfer',req.body.privateKey , req.body.toAddress , req.body.amount);
+     EthereumService.getEstimate(req.body.privateKey,'transfer',[req.body.toAddress,req.body.amount],(data) => {
+     
+      if(data.status)
+      {
+        EthereumService.transfer(req.body.privateKey, req.body.toAddress , req.body.amount, (data)=>{
+           response.data = data;
+           res.json(response);
+        });
+
+      }
+     
+    });
+   }else{
+      response.error = 'invalid info';
+      response.errorCode = 1;
+      res.json(response);
+   }
   },
   onEstimateTransfer(req, res) {
     let response = this.getResponseObject();
     //privateKey,funcName,params, callback
     if (req.body.privateKey && req.body.toAddress && req.body.amount) {
+      this.setNetworkSetting(req.body);
       console.log('onEstimateTransfer',req.body.privateKey , req.body.toAddress , req.body.amount);
      EthereumService.getEstimate(req.body.privateKey,'transfer',[req.body.toAddress,req.body.amount],(data) => {
       response.data = data;
@@ -35,6 +61,12 @@ const Server = {
       response.errorCode = 1;
       res.json(response);
    }
+  },
+  setNetworkSetting(data){
+    if(data.network){
+      console.log('setNetworkSetting',data.network)
+      EthereumService.setNetwork(data.network);
+    }
   },
   createWallet(req, res) {
     let response = this.getResponseObject();
@@ -51,6 +83,7 @@ const Server = {
   onTransactionList(req, res) {
     let response = this.getResponseObject();
     if (req.body.address) {
+      this.setNetworkSetting(req.body);
       EthereumService.getTransactionList(req.body.address, EthereumService.EPIPHANY_CONTRACT, (data) => {
         response.data = data;
         res.json(response);
@@ -65,6 +98,7 @@ const Server = {
   onLogin(req, res) {
     let response = this.getResponseObject();
     if (req.body.key) {
+      this.setNetworkSetting(req.body);
       EthereumService.login(req.body.key, (data) => {
         response.data = data;
         res.json(response);

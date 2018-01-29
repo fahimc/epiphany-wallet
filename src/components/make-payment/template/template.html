@@ -38,6 +38,16 @@
   <div class="form-group">
     <button type="button" class="btn btn-info verify-button"  v-bind:class="formVerifyButtonClass" v-on:click="checkCost" v-bind:disabled="verifyButtonDisabled">verify</button>
     <button type="button" class="btn btn-info form-back-button" v-bind:class="formBackButtonClass" v-on:click="showForm">back</button>
-    <button type="button" class="btn btn-info" v-on:click="sendTransaction" v-bind:disabled="sendButtonDisabled">send</button>
+    <button type="button" class="btn btn-info send-button" v-on:click="sendTransaction" v-bind:class="formSendButtonClass" v-bind:disabled="sendButtonDisabled">send</button>
   </div>
+  <section class="text-white" v-bind:class="showTransactionSent">
+    <div class="card text-white bg-info mb-3" style="margin-top: 10px;">
+      <div class="card-body">
+        <h5 class="card-title"> Transaction sent</h5>
+        <p><strong>Transaction Hash</strong></p>
+        <p>{{transactionHash}}</p>
+      </div>
+    </div>
+   
+  </section>
 </div>

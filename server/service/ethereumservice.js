@@ -5,12 +5,12 @@ let Wallet;
 let TokenABI = require('../data/eny_abi.json');
 let Web3 = require('web3');
 let abiDecoder = require('abi-decoder');
-let web3 = new Web3(Web3.currentProvider || 'https://etherscan..io/');
+let web3 = new Web3(Web3.currentProvider || 'https://etherscan.io/');
 var getJSON = require('get-json');
 const EthereumService = {
     contract: null,
     providers: null,
-    TEST: true,
+    TEST: false,
     TEST_NETWORK: 'rinkeby',
     NETWORK: '',
     provider: null,
@@ -20,8 +20,8 @@ const EthereumService = {
     EPIPHANY_CONTRACT: '0x1b413506FC42E2F04a4E8c57710F850b234D6653', //LIVE
     init() {
       if (this.TEST) {
-        this.NETWORK = this.TEST_NETWORK;
-        this.EPIPHANY_CONTRACT = this.TEST_EPIPHANY_CONTRACT;
+        //this.NETWORK = this.TEST_NETWORK;
+        //this.EPIPHANY_CONTRACT = this.TEST_EPIPHANY_CONTRACT;
         this.PORT_NUMBER = 3000;
       }
       abiDecoder.addABI(TokenABI);
@@ -37,7 +37,6 @@ const EthereumService = {
         });
     },
     getEstimate(privateKey,funcName,params, callback) {
-      console.log();
         let wallet = new ethers.Wallet(privateKey);
         wallet.provider = this.provider;
         this.contract = new ethers.Contract(this.EPIPHANY_CONTRACT, TokenABI, wallet);
@@ -45,7 +44,6 @@ const EthereumService = {
         this.contract.estimate[funcName].apply(null,params).then((data) => {
           //let gasCost = Number(data.toString());
           let gasEstimate = data;
-          console.log(data);
           this.provider.getGasPrice().then((price)=>{
             console.log('price',price.toString());
             console.log('gasEstimate',gasEstimate.toString());
@@ -75,48 +73,25 @@ const EthereumService = {
       initContract() {
         this.contract = new ethers.Contract(this.EPIPHANY_CONTRACT, TokenABI, this.provider);
       },
-      setNetwork() {
+      setNetwork(network) {
+        if(network) {
+          this.NETWORK = (network == 'main' ? '' : this.TEST_NETWORK);
+        if(this.NETWORK == this.TEST_NETWORK) {
+          this.EPIPHANY_CONTRACT = this.TEST_EPIPHANY_CONTRACT;
+          EtherScan = require('etherscan-api').init('1B927KSENR1446GUNWKG12KUIXRCMS2181','rinkeby');
+        }else{
+          EtherScan = require('etherscan-api').init('1B927KSENR1446GUNWKG12KUIXRCMS2181');
+        }
+      }
         this.providers = ethers.providers;
         if (!this.NETWORK) {
           this.provider = this.providers.getDefaultProvider();
         } else {
-          console.log(this.NETWORK);
           this.provider = new this.providers.EtherscanProvider(this.NETWORK);
         }
 
         Wallet = ethers.Wallet;
-      },
-      getSigner(privateKey) {
-        let wallet = new ethers.Wallet(privateKey);
-
-        function getAddress() {
-          return new Promise(function(resolve, reject) {
-            var address = wallet.address;
-            resolve(address);
-          });
-        }
-
-        function sign(transaction) {
-          return new Promise(function(resolve, reject) {
-            var signedTransaction = wallet.sign(transaction);
-            resolve(signedTransaction);
-          });
-        }
-
-        function estimateGas(transaction) {
-          return new Promise((resolve, reject) => {
-            resolve(wallet.defaultGasLimit);
-          });
-        }
-
-        var customSigner = {
-          getAddress: getAddress,
-          provider: this.provider,
-          estimateGas: estimateGas,
-          sign: sign
-        }
-
-        return customSigner;
+        if(network)this.initContract();
       },
       transfer(privateKey, toAddress, amountInENY, callback) {
         let wallet = new ethers.Wallet(privateKey);

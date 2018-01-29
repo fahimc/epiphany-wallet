@@ -18,6 +18,9 @@ export default {
       sendButtonDisabled: true,
       formBackButtonClass: '',
       formVerifyButtonClass: 'show',
+      formSendButtonClass: 'show',
+      showTransactionSent: '',
+      transactionHash: '',
     }
   },
   methods: {
@@ -30,7 +33,6 @@ export default {
         Util.showAlert('Please fill in all details');
       } else {
         Util.hideAlert();
-        Store.privatekey = '0xc876c481add221e551f6420bc1e6be6a3b28004691a279ea8613fc54a031db25';
         console.log(Store.privatekey,this.toAddress,this.amount);
         WalletService.estimateTransfer(Store.privatekey,this.toAddress,this.amount,this.onEstimation.bind(this));
       }
@@ -57,6 +59,17 @@ export default {
         this.activateSendButton();
       }
     },
+    onTransferSent(event){
+      /*
+      {"nonce":5,"gasPrice":{"_bn":"4a817c800"},"gasLimit":{"_bn":"16e360"},"to":"0xb16B425FD68E3a87bfF2226b7092Bd1e00053e9e","value":{"_bn":"0"},"data":"0xa9059cbb000000000000000000000000e51052b916ee14f504230b81cf8c688a357862980000000000000000000000000000000000000000000000000000000000000064","v":43,"r":"0x3d6f9b70a4e417eeb5646e3dec6d3b68e3edb62b6c78b99199990f72207e991f","s":"0x0a1e98387737c9ebba86d8bd1bc2cb07be4f6f26b14db7212ab19f296a8e7b10","chainId":4,"from":"0xeDDf29Fa1fb8ADcbaCF1Ef3691604Bdb65341Ac6","hash":"0x636ed4420e25f00da0406d954d0287a91cc2e950a2607afa9e47f4945c9090f8"}*/
+      this.formSendButtonClass = '';
+      this.formBackButtonClass = '';
+      this.showTransactionSent = 'show';
+      this.transactionShow = '';
+      this.transactionHash = event.data.hash;
+      console.log('onTransferSent',event);
+
+    },
     activateSendButton(){
       this.verifyButtonDisabled = true;
       this.sendButtonDisabled = false;
@@ -66,7 +79,7 @@ export default {
       this.sendButtonDisabled = false;
     },
     sendTransaction(){
-
+       WalletService.sendTransfer(Store.privatekey,this.toAddress,this.amount,this.onTransferSent.bind(this));
     },
     showForm(){
       this.disableSendButton();
