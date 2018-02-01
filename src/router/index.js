@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Login from '@/components/login/login';
 import Home from '@/components/home/home';
 import MakePayment from '@/components/make-payment/make-payment';
+import RequestPayment from '@/components/request-payment/request-payment';
 import Store from '../model/model.js';
 
 Vue.use(Router)
@@ -22,6 +23,11 @@ const router = new Router({
       path: '/make-payment',
       name: 'MakePayment',
       component: MakePayment
+    },
+    {
+      path: '/request-payment',
+      name: 'RequestPayment',
+      component: RequestPayment
     }
   ]
 });

@@ -5,6 +5,10 @@
     <span>make payment</span>
     </a>
   </nav>
+  <div>
+    <button v-on:click="onQRRead">qr code</button>
+    <video id="qrPreview"></video>
+  </div>
   <!-- <img src="static/img/epiphany-logo.png"> -->
   <section v-bind:class="formClass">
     <div class="card text-white bg-info mb-3" style="margin-top: 10px;">
@@ -48,6 +52,6 @@
         <p>{{transactionHash}}</p>
       </div>
     </div>
-   
+
   </section>
 </div>
