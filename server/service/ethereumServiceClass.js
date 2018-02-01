@@ -9,6 +9,7 @@ let Web3 = require('web3');
 let abiDecoder = require('abi-decoder');
 let web3 = new Web3(Web3.currentProvider || 'https://etherscan.io/');
 var getJSON = require('get-json');
+
 class EthereumService {
     constructor(network){
       this.contract = null;

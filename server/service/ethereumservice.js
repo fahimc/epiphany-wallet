@@ -30,18 +30,13 @@ const EthereumService = {
       this.initContract();
       //this.test();
       //this.createNewWallet();
-      //this.getTransactionList('0xeDDf29Fa1fb8ADcbaCF1Ef3691604Bdb65341Ac6',this.EPIPHANY_CONTRACT);
     },
     test() {
-        this.getEstimate('0xc876c481add221e551f6420bc1e6be6a3b28004691a279ea8613fc54a031db25','transfer',['0x3A7Bd844d560FBA83a8Ed981860b95c0b22EdDB0', 100],(data)=>{
-          console.log(data);
-        });
     },
     getEstimate(privateKey,funcName,params, callback) {
         let wallet = new ethers.Wallet(privateKey);
         wallet.provider = this.provider;
         this.contract = new ethers.Contract(this.EPIPHANY_CONTRACT, TokenABI, wallet);
-       // this.contract.estimate.transfer('0x3A7Bd844d560FBA83a8Ed981860b95c0b22EdDB0', 100).then((data) => {
         this.contract.estimate[funcName].apply(null,params).then((data) => {
           //let gasCost = Number(data.toString());
           let gasEstimate = data;
