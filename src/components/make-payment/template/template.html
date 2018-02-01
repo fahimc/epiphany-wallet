@@ -7,7 +7,8 @@
   </nav>
   <div>
     <button v-on:click="onQRRead">qr code</button>
-    <video id="qrPreview"></video>
+    <video id="qrPreview" autoplay></video>
+    <div id="reader" style="width:300px;height:250px"></div>
   </div>
   <!-- <img src="static/img/epiphany-logo.png"> -->
   <section v-bind:class="formClass">
