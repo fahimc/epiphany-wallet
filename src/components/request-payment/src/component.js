@@ -7,10 +7,7 @@ export default {
     new QRCode(document.getElementById("qrcode"), {
       text: `${Store.address}_50`,
       width: 300,
-      height: 300,
-      colorDark: "#000000",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.H
+      height: 300
     });
   }
 };
