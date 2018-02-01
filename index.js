@@ -2,12 +2,14 @@ var express = require('express');
 var bodyParser = require("body-parser");
 var app = express();
 const EthereumService = require('./server/service/ethereumservice.js');
+const EthereumServiceClass = require('./server/service/ethereumServiceClass.js');
 
 const Server = {
   port:8080,
+  DEV:true,
   init() {
+    if(this.DEV)this.port = 3000;
     EthereumService.init();
-    this.port = EthereumService.PORT_NUMBER;
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     this.setRoutes();
@@ -26,13 +28,12 @@ const Server = {
     let response = this.getResponseObject();
     //privateKey,funcName,params, callback
     if (req.body.privateKey && req.body.toAddress && req.body.amount) {
-      this.setNetworkSetting(req.body);
-      console.log('onSendTransfer',req.body.privateKey , req.body.toAddress , req.body.amount);
-     EthereumService.getEstimate(req.body.privateKey,'transfer',[req.body.toAddress,req.body.amount],(data) => {
+      let ethereumService = new EthereumServiceClass(req.body.network);
+     ethereumService.getEstimate(req.body.privateKey,'transfer',[req.body.toAddress,req.body.amount],(data) => {
      
       if(data.status)
       {
-        EthereumService.transfer(req.body.privateKey, req.body.toAddress , req.body.amount, (data)=>{
+        ethereumService.transfer(req.body.privateKey, req.body.toAddress , req.body.amount, (data)=>{
            response.data = data;
            res.json(response);
         });
@@ -50,9 +51,8 @@ const Server = {
     let response = this.getResponseObject();
     //privateKey,funcName,params, callback
     if (req.body.privateKey && req.body.toAddress && req.body.amount) {
-      this.setNetworkSetting(req.body);
-      console.log('onEstimateTransfer',req.body.privateKey , req.body.toAddress , req.body.amount);
-     EthereumService.getEstimate(req.body.privateKey,'transfer',[req.body.toAddress,req.body.amount],(data) => {
+      let ethereumService = new EthereumServiceClass(req.body.network);
+     ethereumService.getEstimate(req.body.privateKey,'transfer',[req.body.toAddress,req.body.amount],(data) => {
       response.data = data;
       res.json(response);
     });
@@ -62,15 +62,16 @@ const Server = {
       res.json(response);
    }
   },
-  setNetworkSetting(data){
+  setNetworkSetting(data,ethereumService){
     if(data.network){
       console.log('setNetworkSetting',data.network)
-      EthereumService.setNetwork(data.network);
+      ethereumService.setNetwork(data.network);
     }
   },
   createWallet(req, res) {
     let response = this.getResponseObject();
-    EthereumService.createNewWallet((wallet) => {
+     let ethereumService = new EthereumServiceClass(req.body.network);
+    ethereumService.createNewWallet((wallet) => {
       response.data = wallet;
       res.json(response);
     });
@@ -83,8 +84,8 @@ const Server = {
   onTransactionList(req, res) {
     let response = this.getResponseObject();
     if (req.body.address) {
-      this.setNetworkSetting(req.body);
-      EthereumService.getTransactionList(req.body.address, EthereumService.EPIPHANY_CONTRACT, (data) => {
+       let ethereumService = new EthereumServiceClass(req.body.network);
+      ethereumService.getTransactionList(req.body.address, ethereumService.EPIPHANY_CONTRACT, (data) => {
         response.data = data;
         res.json(response);
       });
@@ -98,8 +99,8 @@ const Server = {
   onLogin(req, res) {
     let response = this.getResponseObject();
     if (req.body.key) {
-      this.setNetworkSetting(req.body);
-      EthereumService.login(req.body.key, (data) => {
+       let ethereumService = new EthereumServiceClass(req.body.network);
+      ethereumService.login(req.body.key, (data) => {
         response.data = data;
         res.json(response);
       });

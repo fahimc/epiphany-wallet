@@ -37,7 +37,6 @@ export default {
   created() {
     this.balance = Util.currencyFormatted(Util.convertCurrencyValue(Number(this.balance)));
     WalletService.getTransactions(Store.address,this.onTransaction.bind(this));
-    //WalletService.getTransactions('0x8B3E95e721AaCC68e235c95589e3600d0C81d045', this.onTransaction.bind(this));
   },
 
 };
