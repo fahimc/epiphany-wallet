@@ -1,11 +1,26 @@
 .request-payment{
-  background-color:#FFF;
   text-align:center;
   #qrcode{
+  	display: none;
+  	background-color:#FFF;
      margin: auto;
-    width: 300px;
-    padding-top:20px;
-    padding-bottom:20px;
+    width: 340px;
+    padding:20px;
+    &.show{
+    	display: block;
+    }
+  }
+  .form-group{
+  	margin: auto;
+  }
+  input {
+    text-align: center;
+    color: #fff;
+    &[type=number]::-webkit-inner-spin-button,
+    &[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 }
 
