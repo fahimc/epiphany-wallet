@@ -102,10 +102,24 @@ export default {
         video.src = ''; // fallback.
       }
       var qr = new QCodeDecoder();
+      let results = [];
       qr.decodeFromCamera(video, function(err,result) {
-        if (err) throw err;
-
+        //if (err) throw err;
+        if(result)results.push(result);
         console.log(result);
+        let lastResult;
+        let found;
+        results.forEach((item)=>{
+          if(!lastResult)
+          {
+              lastResult = item;
+          }else{
+              if(lastResult == item)found = item;
+              lastResult = item;
+          }
+        });
+        if(found)
+        console.log('found',found);
       });
       return;
       let scanner = new Instascan.Scanner({ video: document.getElementById('qrPreview') });
