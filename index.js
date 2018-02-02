@@ -6,7 +6,7 @@ const EthereumServiceClass = require('./server/service/ethereumServiceClass.js')
 
 const Server = {
   port:8080,
-  DEV:true,
+  DEV:false,
   init() {
     if(this.DEV)this.port = 3000;
     EthereumService.init();
