@@ -45,6 +45,7 @@
           if (file.match(/\.(js|css)$/)) { %>
     <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
     <script type="text/javascript" src="static/lib/web3/web3.min.js"></script>
+    <script type="text/javascript" src="static/lib/polyfill.js"></script>
     <script type="text/javascript" src="static/lib/jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="static/lib/popper.js"></script>
     <script type="text/javascript" src="static/lib/qrcode.min.js"></script>

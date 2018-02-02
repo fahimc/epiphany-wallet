@@ -87,10 +87,6 @@ export default {
       this.formVerifyButtonClass = 'show';
     },
     onQRRead() {
-      navigator.getUserMedia = navigator.getUserMedia ||
-        navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia ||
-        navigator.msGetUserMedia;
 
       var video = document.querySelector('video');
 
@@ -121,21 +117,12 @@ export default {
         if(found)
         console.log('found',found);
       });
-      return;
-      let scanner = new Instascan.Scanner({ video: document.getElementById('qrPreview') });
-      scanner.addListener('scan', function(content) {
-        console.log(content);
-      });
-      Instascan.Camera.getCameras().then(function(cameras) {
-        if (cameras.length > 0) {
-          console.log('scanning');
-          scanner.start(cameras[0]);
-        } else {
-          console.error('No cameras found.');
-        }
-      }).catch(function(e) {
-        console.error(e);
-      });
+       $('#qr-reader-modal').modal('show');
     }
+  },
+  created(){
+     $('#qr-reader-modal').modal({
+      backdrop: false
+    });
   }
 };
