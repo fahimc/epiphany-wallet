@@ -32,7 +32,8 @@ const router = new Router({
   ]
 });
 
-/*
+if(Store.IS_DEVELOPMENT_MODE)return;
+
 router.beforeEach((to, from,next) => {
     if (!Store.address && to.name !== 'Login') {
         next('/');
@@ -40,6 +41,6 @@ router.beforeEach((to, from,next) => {
         next()
     }
 });
-*/
+/**/
 
 export default router;
