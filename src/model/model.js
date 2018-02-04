@@ -9,7 +9,7 @@ var store = {
   alertId: 'main-alert',
   showAlertClass: '',
   //LIVE_SERVICE_URL:'http://198.58.105.111:8080',
-  LIVE_SERVICE_URL:'//service.epiphanycoins.com',
+  LIVE_SERVICE_URL:'//eny4.co.uk',
   LOCAL_SERVICE_URL:'http://localhost:3000',
   SERVICE_URL(){
   	return this.IS_DEVELOPMENT_MODE ? this.LOCAL_SERVICE_URL : this.LIVE_SERVICE_URL;
