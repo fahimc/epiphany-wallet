@@ -1,5 +1,8 @@
 @import 'fonts';
 @import 'color_palette';
+@import 'theme';
+@import '../mixin/mixin';
+@import '../component/component';
 body {
   background-color: $backgroundColorDark;
   .container {

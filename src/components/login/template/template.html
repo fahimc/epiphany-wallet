@@ -1,16 +1,12 @@
 <div class="login">
-  <img src="static/img/epiphany-logo.png">
-  <h1 class="text-light">Login into your Epiphany Wallet</h1>
+  <img class="logo" src="static/img/epiphany-logo.png">
   <form>
     <div class="form-group">
       <input v-model="privatekey" type="text" class="form-control text-dark" id="privatekey" aria-describedby="private key" placeholder="private key">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your private key.</small>
+      <small id="emailHelp" class="form-text text-muted">We never share or store your private key.</small>
     </div>
-    <a href="#">
-      <button type="button" class="btn btn-info" v-on:click="login()">Login</button>
-    </a>
-    <br>
-    <button type="button" id="create-wallet-button" class="btn btn-info" v-on:click="onCreateClick()">Create new Account</button>
+      <button type="button" class="btn primary" v-on:click="login()">Login</button>
+    <button type="button" id="create-wallet-button" class="btn primary" v-on:click="onCreateClick()">Create new Account</button>
     <select class="form-control form-control-sm bg-muted" v-model="network" v-on:change="networkChanged">
       <option>Change network</option>
       <option value="main">Main Network</option>

@@ -1,0 +1,17 @@
+button,.btn {
+	width: $formControlWidth;
+	border-radius: $formControlBorderRadius;
+	margin: auto;
+	margin-top: $formControlMargin;
+
+	&.primary{
+		background-color: $primaryBlue;
+		color:$primaryTextColor;
+	}
+
+	&:hover,&:active{
+		background-color: $secondaryBlue;
+	}
+
+	@include desktop();
+}

@@ -1,0 +1,8 @@
+select,select.form-control {
+	margin-top: $formControlMargin;
+	border-radius: 0;
+    border: 1px solid $darkBorderColor;
+    background-color: transparent;
+
+    @include desktop();
+}
