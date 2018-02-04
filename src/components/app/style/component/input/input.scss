@@ -4,6 +4,13 @@ input, input.form-control {
 	border-radius:$formControlBorderRadius;
 	background: transparent;
 	border: 1px solid $darkBorderColor; 
+	&:-webkit-autofill,
+	&:-webkit-autofill:hover,
+	&:-webkit-autofill:focus,
+	&:-webkit-autofill:active {
+	  background-color: transparent;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 	@include desktop();
 	
 }
