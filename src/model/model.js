@@ -1,5 +1,5 @@
 var store = {
-  IS_DEVELOPMENT_MODE:true,
+  IS_DEVELOPMENT_MODE:false,
   network: '',
   address: '',
   balance: 999999999999,
