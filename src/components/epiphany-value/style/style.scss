@@ -1,0 +1,21 @@
+@import '../../app/style/core/core';
+.epiphany-value {
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  color: $primaryTextColor;
+  margin-top: 20px;
+  flex-basis:auto;
+  padding-top: 10px;
+  & > small{
+    margin-top: 5px;
+  }
+  h1{
+  	margin-bottom: 0;
+  	font-weight: 700;
+    line-height: 1.6rem;
+  }
+}

@@ -2,6 +2,8 @@ import Store from '../../../model/model.js';
 import WalletService from '../../../service/walletservice.js';
 import Util from '../../../service/util.js';
 import balanceSummary from '../../balance-summary/balance-summary.vue';
+import epiphanyValue from '../../epiphany-value/epiphany-value.vue';
+import transactionItem from '../../transaction-item/transaction-item.vue';
 import Model from '../../../model/store';
 if (!window.web3) window.web3 = new Web3(Web3.currentProvider);
 
@@ -15,7 +17,9 @@ export default {
     };
   },
   components:{
-    balanceSummary
+    balanceSummary,
+    epiphanyValue,
+    transactionItem
   },
   methods: {
     onTransaction(event) {

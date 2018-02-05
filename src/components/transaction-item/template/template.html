@@ -1,0 +1,16 @@
+<div class="transaction-item">
+	<section>
+		<p class="item-type">{{item.type}}</p>
+		
+		<small class="">{{item.fee}} ETH</small>
+		<small>(transaction fee)</small>
+        <a v-bind:href="item.link" target="_blank">
+          <p><small class="info">more info</small></p>
+        </a>
+	</section>
+	<section>
+		<small>{{item.date}}</small>
+		<p class="transfer" v-bind:class="item.transferClass">{{item.transfer}} <small class="symbol">ENY</small></p>
+	</section>  
+</div>
+

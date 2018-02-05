@@ -1,34 +1,33 @@
 @import '../../app/style/core/core';
-.balance-summary{
-	color:$primaryTextColor;
-	padding-top: 50px;
-	padding-left: $gutterPadding;
-	padding-right: $gutterPadding;
-	background: url(/static/img/poly.jpg);
-    padding-bottom: 20px;
-	small {
-		font-size: 60%;
-	}
-	p.address-text {
-		line-height: 6px;
-		font-size: 0.7rem;
-	}
-	p.balance {
-	  font-size: 3rem;
-      font-weight: bold;
-      margin-bottom: 0;
-      line-height: 50px;
-      text-overflow:ellipsis;
-      max-width: 80%;
-      overflow: hidden;
+.balance-summary {
+  color: $primaryTextColor;
+   width: calc(100% - 100px);
+  small {
+    font-size: 60%;
+    font-family: 'Open Sans', sans-serif;
+  }
+  p.address-text {
+    font-size: 0.7rem;
+    font-family: 'Open Sans', sans-serif;
+    word-wrap: break-word;
+    line-height: 0.8rem;
+  }
+  p.balance {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 0;
+    line-height: 1.4rem;
+    text-overflow: ellipsis;
+    max-width: 80%;
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
 
-      .symbol {
-        font-size: 40%;
-        vertical-align: super;
-      }
-	}
-	small.balance-in-usd{
-		font-size: 90%;
-	}
+    .symbol {
+      font-size: 40%;
+      vertical-align: super;
+    }
+  }
+  small.balance-in-usd {
+    font-size: 90%;
+  }
 }
-

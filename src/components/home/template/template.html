@@ -1,31 +1,12 @@
 <div class="home">
-  <balance-summary></balance-summary>
-  <!--
-  <div class="balance">
-    <small>BALANCE</small>
-    <p><span>{{balance}}</span> <span class="symbol">ENY</span></p>
-    <div class="button-holder">
-      <a href="#/make-payment" class="btn btn-info btn-lg bg-primary text-light">Make a Payment</a><a href="#/request-payment" class="btn btn-info btn-lg bg-primary text-light">Request Payment</a>
-    </div>
+  <section class="hero">
+    <balance-summary></balance-summary>
+    <epiphany-value></epiphany-value>
+  </section>
+  <div class="section-header">
+    <span>recent transaction</span>
   </div>
--->
-<div class="section-header">
-  <span>recent transaction</span>
-</div>
   <div class="list">
-    <div class="list-group">
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start bg-light" v-for="item in transactions">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1 text-primary"  v-bind:class="item.transferClass">{{item.transfer}} <small>ENY</small></h5>
-          <small>{{item.date}}</small>
-        </div>
-        <p class="mb-1 text-muted">{{item.type}}</p>
-        <p><small class="text-muted">{{item.fee}}<small> ETH</small>(transaction fee)</small>
-        </p>
-        <a v-bind:href="item.link" target="_blank">
-        <p><small class="text-primary">MORE INFO</small></p>
-        </a>
-      </a>
-    </div>
+    <transaction-item v-for="item in transactions" v-bind:item="item"></transaction-item>
   </div>
 </div>

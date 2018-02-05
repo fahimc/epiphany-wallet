@@ -4,6 +4,7 @@ let store = {
     navbarClass: '',
     navTitle: '',
     loaderClass: '',
+    currentPriceUSD:0.5,
   },
   IS_DEVELOPMENT_MODE:false
 }
