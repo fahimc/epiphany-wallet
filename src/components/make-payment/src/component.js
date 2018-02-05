@@ -1,7 +1,7 @@
 import Util from '../../../service/util.js';
 import WalletService from '../../../service/walletservice.js';
 import Store from '../../../model/model.js';
-
+import Model from '../../../model/store';
 export default {
   name: 'make-payment',
   data() {
@@ -121,6 +121,8 @@ export default {
     }
   },
   created(){
+    Model.state.navTitle = 'make a payment';
+    Model.setNavbarState(true,false,true);
      $('#qr-reader-modal').modal({
       backdrop: false
     });

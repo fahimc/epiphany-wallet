@@ -1,5 +1,13 @@
+@import '../../app/style/core/core';
 .make-payment {
   text-align: center;
+  padding-top: 50px;
+  background-color: $primaryBlue;
+  height: 100%;
+  color: $primaryTextColor;
+  padding-left: $gutterPadding;
+  padding-right: $gutterPadding;
+  font-family: 'Open Sans', sans-serif;
   .form-control::placeholder {
     text-align: center;
     color: #e4e4e4; //opacity: 0.8;
@@ -21,14 +29,17 @@
   .btn:disabled {
     color: #e4e4e4;
   }
+  section {
+    margin-top: 20px;
+  }
   section,
   .transaction-info,
   .form-back-button,
   .send-button,
   .verify-button {
-    display: none;
+    // display: none;
     &.show {
-      display: block;
+      //  display: block;
     }
     &.btn.show {
       display: inline-block;
