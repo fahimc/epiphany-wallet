@@ -4,7 +4,9 @@ import Login from '@/components/login/login';
 import Home from '@/components/home/home';
 import MakePayment from '@/components/make-payment/make-payment';
 import RequestPayment from '@/components/request-payment/request-payment';
+import NewWallet from '@/components/new-wallet/new-wallet';
 import Store from '../model/model.js';
+import Model from '../model/store';
 
 Vue.use(Router)
 const router = new Router({
@@ -28,11 +30,16 @@ const router = new Router({
       path: '/request-payment',
       name: 'RequestPayment',
       component: RequestPayment
+    },
+    {
+      path: '/new-wallet',
+      name: 'NewWallet',
+      component: NewWallet
     }
   ]
 });
 
-if(!Store.IS_DEVELOPMENT_MODE){
+if(!Model.IS_DEVELOPMENT_MODE){
 router.beforeEach((to, from,next) => {
     if (!Store.address && to.name !== 'Login') {
         next('/');

@@ -1,5 +1,10 @@
-<div class="navbar">
-	<div><span>{{title}}</span></div>
-	<i class="fas fa-bars fa-lg"></i>
+<div class="navbar" v-bind:class="model.navbarClass">
+	<button class="back-button">
+	  <i class="fas fa-chevron-left fa-lg"></i>
+	</button>
+	<button class="menu-button">
+	  <i class="fas fa-bars fa-lg"></i>
+	</button>
+	<div class="title"><span>{{model.navTitle}}</span></div>
 </div>
 

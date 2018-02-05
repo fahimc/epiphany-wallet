@@ -8,6 +8,7 @@ var store = {
   alertClass: 'alert-danger',
   alertId: 'main-alert',
   showAlertClass: '',
+  navbarClass: '',
   navTitle: 'overview',
   currentPriceUSD:0.5,
   //LIVE_SERVICE_URL:'http://198.58.105.111:8080',

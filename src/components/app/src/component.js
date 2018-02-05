@@ -1,7 +1,9 @@
 import alertDialog from '../../alert/alert.vue';
 import navbar from '../../navbar/navbar.vue';
+import loading from '../../loading/loading.vue';
 import Store from '../../../model/model.js';
 import { EventBus } from '../../../event/event.js';
+import Model from '../../../model/store';
 export default {
   name: 'app',
   data() {
@@ -14,10 +16,13 @@ export default {
   },
   components:{
     alertDialog,
-    navbar
+    navbar,
+    loading
   },
   methods: {
 
   },
+  created(){
+  }
   
 };

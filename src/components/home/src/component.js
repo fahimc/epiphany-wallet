@@ -2,6 +2,7 @@ import Store from '../../../model/model.js';
 import WalletService from '../../../service/walletservice.js';
 import Util from '../../../service/util.js';
 import balanceSummary from '../../balance-summary/balance-summary.vue';
+import Model from '../../../model/store';
 if (!window.web3) window.web3 = new Web3(Web3.currentProvider);
 
 export default {
@@ -10,13 +11,13 @@ export default {
     return {
       balance: Store.balance,
       transactions: [],
+      model: Model.state
     };
   },
   components:{
     balanceSummary
   },
   methods: {
-
     onTransaction(event) {
       console.log('onTransaction', event);
       let network = Store.network == 'test' ? 'rinkeby.' : '';
@@ -41,6 +42,8 @@ export default {
   created() {
     this.balance = Util.currencyFormatted(Util.convertCurrencyValue(Number(this.balance)));
     WalletService.getTransactions(Store.address,this.onTransaction.bind(this));
+    Model.state.navTitle = 'overview';
+    Model.setNavbarState(true,true);
   },
 
 };

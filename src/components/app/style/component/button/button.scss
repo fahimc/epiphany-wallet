@@ -8,6 +8,13 @@ button,.btn {
 		background-color: $primaryBlue;
 		color:$primaryTextColor;
 	}
+	&.primary-inverted{
+		background-color: transparent;
+		border: 1px solid white;
+		color:$primaryTextColor;
+		padding: 5px;
+		font-weight: bold;
+	}
 
 	&:hover,&:active{
 		background-color: $secondaryBlue;

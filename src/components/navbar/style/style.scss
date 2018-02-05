@@ -9,5 +9,33 @@
 	right: 0;
 	padding-left: $gutterPadding;
 	padding-right: $gutterPadding;
+	display: none;
+	&.show{
+		display: block;
+	}
+	.menu-button,.back-button {
+	  color:$primaryTextColor;
+      display: none;
+      width: auto;
+      background: transparent;
+      border: 0;
+      margin-top: 0;
+	}
+
+	&.show-menu {
+		.menu-button{
+			display: inline-block;	
+		}
+	}
+	&.show-back {
+		.back-button{
+			display: inline-block;	
+		}
+	}
+
+
+	.title {
+		display: inline-block;
+	}
 }
 

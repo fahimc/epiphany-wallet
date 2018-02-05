@@ -4,5 +4,14 @@
   left:0;
   width: 100vw;
   z-index: 99999;
+  .alert {
+  	border-radius: 0;
+    border: 0;
+  }
+  button.close{
+  	width: auto;
+    height: auto;
+    margin-top: 0;
+  }
 }
 

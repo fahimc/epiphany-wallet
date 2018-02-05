@@ -53,6 +53,7 @@ export default {
   },
   mounted() {},
   created() {
+    console.log(this.$root.$data);
     $('#networkDropdown').dropdown();
     $('#create-modal').modal({
       backdrop: false

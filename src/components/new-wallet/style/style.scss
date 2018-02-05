@@ -1,0 +1,17 @@
+@import '../../app/style/core/core';
+.new-wallet{
+   background-color: $primaryBlue;
+   width: 100vw;
+   height: 100vh;
+   padding: $gutterPadding;
+   padding-top: 60px;
+   color:$primaryTextColor;
+   text-align: center;
+
+   .generate-section{
+   	  h1{
+   	  	margin-bottom: 5vh;
+   	  }
+   }
+}
+
