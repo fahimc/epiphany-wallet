@@ -1,6 +1,10 @@
 <div id="app">
-  <alert-dialog></alert-dialog>
-  <navbar></navbar>
-  <loading></loading>
-  <router-view></router-view>
+  <div class="holder">
+    <alert-dialog></alert-dialog>
+    <navbar></navbar>
+    <loading></loading>
+    <transition>
+      <router-view></router-view>
+    </transition>
+  </div>
 </div>

@@ -1,7 +1,16 @@
 <div class="new-wallet">
-	<section class="generate-section">
+	<section class="generate-section" v-bind:class="generateClass">
 		<h1>Create a new Ethereum Wallet for your Epiphany coins</h1>
 		<button class="primary-inverted" v-on:click="generateClicked">generate</button>
+	</section>
+	<section class="created" v-bind:class="successClass">
+		<h1>Sucess!</h1>
+		<p>new wallet is created!</p>
+          <p><strong>Wallet Address</strong> <span>{{newWalletAddress}}</span></p>
+          <p><strong>Private Key</strong> <span>{{newPrivateKey}}</span>
+            <br><small>Never share your private key</small></p>
+          <p><small>Save this information where it's safe. Do not lose it or you may lose your coins.</small></p>
+          <a href="#/"><button type="button" class="primary-inverted">login</button></a>
 	</section>
 </div>
 

@@ -41,7 +41,7 @@ const router = new Router({
 
 if(!Model.IS_DEVELOPMENT_MODE){
 router.beforeEach((to, from,next) => {
-    if (!Store.address && to.name !== 'Login') {
+    if (!Store.address && to.name !== 'Login' && to.name !== 'NewWallet') {
         next('/');
     } else {
         next()

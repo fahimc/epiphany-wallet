@@ -5,7 +5,7 @@ let store = {
     navTitle: '',
     loaderClass: '',
   },
-  IS_DEVELOPMENT_MODE:true
+  IS_DEVELOPMENT_MODE:false
 }
 export default new Vue({
   data: store,

@@ -1,5 +1,6 @@
 import WalletService from '../../../service/walletservice.js';
 import Store from '../../../model/model.js';
+import Model from '../../../model/store';
 import { EventBus } from '../../../event/event.js';
 
 export default {
@@ -40,7 +41,7 @@ export default {
     showAlert(message) {
         EventBus.$emit('showAlert', {
           message: message,
-          typeClass: 'alert-danger'
+          typeClass: 'danger'
         });
     },
     onCreateClick(){
@@ -53,7 +54,7 @@ export default {
   },
   mounted() {},
   created() {
-    console.log(this.$root.$data);
+    Model.setNavbarState(false);
     $('#networkDropdown').dropdown();
     $('#create-modal').modal({
       backdrop: false

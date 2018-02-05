@@ -19,7 +19,7 @@ export default {
       {
         EventBus.$emit('showAlert',{
           message:'please provide the amount',
-          typeClass: 'alert-danger'
+          typeClass: 'danger'
         });
         return;
       }

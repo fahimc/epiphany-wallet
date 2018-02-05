@@ -1,17 +1,29 @@
 @import '../../app/style/core/core';
-.new-wallet{
-   background-color: $primaryBlue;
-   width: 100vw;
-   height: 100vh;
-   padding: $gutterPadding;
-   padding-top: 60px;
-   color:$primaryTextColor;
-   text-align: center;
-
-   .generate-section{
-   	  h1{
-   	  	margin-bottom: 5vh;
-   	  }
-   }
+.new-wallet {
+  background-color: $primaryBlue;
+  width: 100%;
+  height: 100%;
+  padding: $gutterPadding;
+  padding-top: 60px;
+  color: $primaryTextColor;
+  text-align: center;
+  section {
+    display: none;
+    &.show {
+      display: block;
+    }
+  }
+  .generate-section {
+    h1 {
+      margin-bottom: 5vh;
+    }
+  }
+  .created {
+    p {
+      word-wrap: break-word;
+    }
+    small {
+      color: #e4e4e4;
+    }
+  }
 }
-

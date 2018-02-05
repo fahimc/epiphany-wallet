@@ -1,2 +1,7 @@
-<div class="alert" ></div>
+<div class="alert" v-bind:class="[backgroundClass,showClass]">
+	<label>{{message}}</label>
+	<button v-on:click="onHideAlert">
+		<i class="fas fa-times"></i>
+	</button>
+</div>
 

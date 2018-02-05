@@ -1,17 +1,35 @@
-.alert{
+@import '../../app/style/core/core';
+.alert {
   position: absolute;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   width: 100vw;
+  z-index: 1;
+  border-radius: 0;
+  color: $primaryTextColor;
+  display: none;
   z-index: 99999;
-  .alert {
-  	border-radius: 0;
-    border: 0;
+  border: 0;
+  &.show {
+    display: block;
   }
-  button.close{
-  	width: auto;
+
+  &.danger {
+    background-color: $primaryRed;
+  }
+  label{
+    padding-right: 30px;
+  }
+  button {
+    background-color: transparent;
+    color: $primaryTextColor;
+    border: 0;
+    position: absolute;
+    right: $gutterPadding;
+    width: auto;
     height: auto;
     margin-top: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
-

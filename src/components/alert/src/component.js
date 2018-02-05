@@ -3,21 +3,19 @@ export default {
   name: 'alert-dialog',
   data() {
     return {
-      dialoghtml: ''
+      message: '',
+      backgroundClass:'',
+      showClass:''
     }
   },
   methods: {
     onShowAlert(data) {
-      let template = `<div class="alert ${data.typeClass} text-white alert-dismissible fade show"  role="alert">
-         ${data.message}
-         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-           <span aria-hidden="true">&times;</span>
-         </button>
-         </div>`;
-      this.$el.innerHTML = template;
+      this.backgroundClass = data.typeClass;
+      this.message = data.message;
+      this.showClass = 'show';
     },
     onHideAlert(){
-      this.$el.innerHTML = '';
+      this.showClass = '';
     }
   },
   created() {
