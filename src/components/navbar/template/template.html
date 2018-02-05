@@ -1,10 +1,29 @@
 <div class="navbar" v-bind:class="model.navbarClass">
-	<button class="back-button" v-on:click="goBack">
-	  <i class="fas fa-chevron-left fa-lg"></i>
-	</button>
-	<button class="menu-button">
-	  <i class="fas fa-bars fa-lg"></i>
-	</button>
-	<div class="title"><span>{{model.navTitle}}</span></div>
+  <button class="back-button" v-on:click="goBack">
+    <i class="fas fa-chevron-left fa-lg"></i>
+  </button>
+  <button class="menu-button" v-on:click="openMenu">
+    <i class="fas fa-bars fa-lg"></i>
+  </button>
+  <div class="title"><span>{{model.navTitle}}</span></div>
+  <div class="menu-panel" v-bind:class="showMenuClass">
+    <section class="heading">
+    	<label>menu</label>
+      <button class="close-button" v-on:click="onHideMenu">
+        <i class="fas fa-times"></i>
+      </button>
+    </section>
+    <section class="list">
+    	<a href="#/make-payment" v-on:click="onHideMenu">
+    		<div>
+    			<span>make a payment</span>
+    		</div>
+    	</a>
+    	<a href="#/request-payment" v-on:click="onHideMenu">
+    		<div>
+    			<span>request a payment</span>
+    		</div>
+    	</a>
+    </section>
+  </div>
 </div>
-

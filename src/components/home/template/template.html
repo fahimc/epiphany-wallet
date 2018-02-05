@@ -7,6 +7,6 @@
     <span>recent transaction</span>
   </div>
   <div class="list">
-    <transaction-item v-for="item in transactions" v-bind:item="item"></transaction-item>
+    <transaction-item v-for="item in transactions" v-bind:item="item" :key="item.id"></transaction-item>
   </div>
 </div>

@@ -7,29 +7,43 @@
   padding: 10px;
   display: flex;
   font-family: 'Open Sans', sans-serif;
-  section{
-  	flex: 1 1 auto;
-  	display: inline-block;
-     &:nth-child(2){
-     	text-align: right;
-     }
-  	.item-type{
-  		font-weight: bold;
-  		color: white;
-  	}
-  	.transfer{
-  		font-size: 1rem;
-  	}
-  	small{
-  		display: block;
-  		color: #6c757d;
-  		&.symbol{
-  			color: white;
-  			display: inline-block;
-  		}
-  	}
-  	.info{
-  		color:$secondaryBlue;
-  	}
+  section {
+    flex: 1 1 auto;
+    display: inline-block;
+    max-width: 50%;
+    &:nth-child(2) {
+      text-align: right;
+    }
+    .item-type {
+      font-weight: bold;
+      color: white;
+    }
+    .transfer {
+      font-size: 1rem;
+      line-height: 1rem;
+    }
+    small {
+      display: block;
+      color: #6c757d;
+      &.symbol {
+        color: white;
+        display: inline-block;
+      }
+    }
+    .info {
+      color: $secondaryBlue;
+      &:hover {
+        color: $secondaryBlue;
+      }
+    }
+    .hash {
+      overflow: hidden;
+      display: block;
+      color: #e4e4e4;
+      font-size: 0.7rem;
+      margin-right: 0;
+      padding-right: 0;
+      text-overflow: ellipsis;
+    }
   }
 }

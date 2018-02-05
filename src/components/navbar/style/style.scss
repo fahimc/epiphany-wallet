@@ -1,41 +1,94 @@
 @import '../../app/style/core/core';
-.navbar{
-	color:$primaryTextColor;
-	background-color: rgba($primaryBlue,0.5);
-	position: absolute;
-	top:0;
-	z-index: 5;
-	left:0;
-	right: 0;
-	padding-left: $gutterPadding;
-	padding-right: $gutterPadding;
-	display: none;
-	&.show{
-		display: block;
-	}
-	.menu-button,.back-button {
-	  color:$primaryTextColor;
-      display: none;
-      width: auto;
-      background: transparent;
-      border: 0;
+.navbar {
+  color: $primaryTextColor;
+  background-color: rgba($primaryBlue, 0.5);
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  padding-left: $gutterPadding;
+  padding-right: $gutterPadding;
+  display: none;
+  &.show {
+    display: block;
+  }
+  .menu-button,
+  .back-button {
+    color: $primaryTextColor;
+    display: none;
+    width: auto;
+    background: transparent;
+    border: 0;
+    margin-top: 0;
+  }
+
+  &.show-menu {
+    .menu-button {
+      display: inline-block;
+    }
+  }
+  &.show-back {
+    .back-button {
+      display: inline-block;
+    }
+  }
+  .title {
+    display: inline-block;
+  }
+  .menu-panel {
+    z-index: 9999;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #000;
+    height: 100vh;
+    width: 80vw;
+    transform: translateX(-100%);
+    transition: all 0.5s;
+
+    &.show {
+      transform: translateX(0);
+    }
+
+    .heading {
+      color: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 20px;
       margin-top: 0;
-	}
+      line-height: 1rem;
+    }
 
-	&.show-menu {
-		.menu-button{
-			display: inline-block;	
-		}
-	}
-	&.show-back {
-		.back-button{
-			display: inline-block;	
-		}
-	}
+    button.close-button {
+      background-color: transparent;
+      color: $primaryTextColor;
+      border: 0;
+      position: absolute;
+      right: 10px;
+      width: auto;
+      height: auto;
+      margin-top: 0;
+      top: 10px;
+    }
 
+    .list {
+      margin-top: 50px;
+      height: calc(100% - 50px);
+      overflow: auto;
 
-	.title {
-		display: inline-block;
-	}
+      div {
+        padding: 20px;
+        color: #fff;
+        border-bottom: 1px solid #111;
+
+        &:hover{
+        	color: #fff;
+        }
+      }
+    }
+  }
 }
-
