@@ -1,29 +1,6 @@
 <div class="home">
-  <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-    <img src="static/img/epiphany-logo.png">
-    <span>epiphany account</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-      </ul>
-      <span class="navbar-text">
-      Navbar text with an inline element
-    </span>
-    </div>
-  </nav>
+  <balance-summary></balance-summary>
+  <!--
   <div class="balance">
     <small>BALANCE</small>
     <p><span>{{balance}}</span> <span class="symbol">ENY</span></p>
@@ -31,11 +8,12 @@
       <a href="#/make-payment" class="btn btn-info btn-lg bg-primary text-light">Make a Payment</a><a href="#/request-payment" class="btn btn-info btn-lg bg-primary text-light">Request Payment</a>
     </div>
   </div>
+-->
+<div class="section-header">
+  <span>recent transaction</span>
+</div>
   <div class="list">
     <div class="list-group">
-      <div class="heading-holder bg-dark text-light">
-        <h2>Recent Transactions</h2>
-      </div>
       <a href="#" class="list-group-item list-group-item-action flex-column align-items-start bg-light" v-for="item in transactions">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1 text-primary"  v-bind:class="item.transferClass">{{item.transfer}} <small>ENY</small></h5>

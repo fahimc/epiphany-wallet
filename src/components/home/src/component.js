@@ -1,6 +1,7 @@
 import Store from '../../../model/model.js';
 import WalletService from '../../../service/walletservice.js';
 import Util from '../../../service/util.js';
+import balanceSummary from '../../balance-summary/balance-summary.vue';
 if (!window.web3) window.web3 = new Web3(Web3.currentProvider);
 
 export default {
@@ -10,6 +11,9 @@ export default {
       balance: Store.balance,
       transactions: [],
     };
+  },
+  components:{
+    balanceSummary
   },
   methods: {
 

@@ -1,4 +1,5 @@
-    .home {
+@import '../../app/style/core/core';
+.home {
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -12,6 +13,15 @@
         .navbar-toggler{
           display: none;
         }
+      }
+      .section-header{
+        padding-left: $gutterPadding;
+        padding-right: $gutterPadding;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: $primaryBlue;
+        font-weight: bold;
+        color: $primaryTextColor;
       }
       .balance {
         position: relative;

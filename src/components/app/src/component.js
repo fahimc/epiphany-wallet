@@ -1,4 +1,5 @@
 import alertDialog from '../../alert/alert.vue';
+import navbar from '../../navbar/navbar.vue';
 import Store from '../../../model/model.js';
 import { EventBus } from '../../../event/event.js';
 export default {
@@ -12,7 +13,8 @@ export default {
     }
   },
   components:{
-    alertDialog
+    alertDialog,
+    navbar
   },
   methods: {
 
