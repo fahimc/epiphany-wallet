@@ -6,7 +6,7 @@ let store = {
     loaderClass: '',
     currentPriceUSD:0.5,
   },
-  IS_DEVELOPMENT_MODE:false
+  IS_DEVELOPMENT_MODE:true
 }
 export default new Vue({
   data: store,

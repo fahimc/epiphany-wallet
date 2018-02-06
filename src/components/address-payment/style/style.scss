@@ -1,0 +1,23 @@
+@import '../../app/style/core/core';
+.address-payment {
+  text-align: center;
+  padding-top: 50px;
+  background-color: $primaryBlue;
+  height: 100%;
+  color: $primaryTextColor;
+  padding-left: $gutterPadding;
+  padding-right: $gutterPadding;
+  font-family: 'Open Sans', sans-serif;
+
+  label{
+  	display: block;
+  }
+  input{
+  	border: 1px solid #333;
+  	&::placeholder {
+    text-align: center;
+    color: #000; //opacity: 0.8;
+    background-color: #fff;
+  }
+  }
+}
