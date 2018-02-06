@@ -5,8 +5,10 @@ let store = {
     navTitle: '',
     loaderClass: '',
     currentPriceUSD:0.5,
+    newTransactionData:null,
+    privateKey:'',
   },
-  IS_DEVELOPMENT_MODE:true
+  IS_DEVELOPMENT_MODE:false
 }
 export default new Vue({
   data: store,

@@ -19,6 +19,8 @@ button,.btn {
 	&:hover,&:active{
 		background-color: $secondaryBlue;
 	}
-
+    &[disabled="disabled"]{
+     opacity: 0.2;	
+    }
 	@include desktop();
 }

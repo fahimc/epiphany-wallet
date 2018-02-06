@@ -6,6 +6,7 @@ import MakePayment from '@/components/make-payment/make-payment';
 import RequestPayment from '@/components/request-payment/request-payment';
 import NewWallet from '@/components/new-wallet/new-wallet';
 import AddressPayment from '@/components/address-payment/address-payment';
+import VerifyTransaction from '@/components/verify-transaction/verify-transaction';
 import Store from '../model/model.js';
 import Model from '../model/store';
 
@@ -41,6 +42,11 @@ const router = new Router({
       path: '/address-payment',
       name: 'AddressPayment',
       component: AddressPayment
+    },
+    {
+      path: '/verify-transaction',
+      name: 'VerifyTransaction',
+      component: VerifyTransaction
     }
   ]
 });

@@ -21,7 +21,7 @@ const Util = {
   showAlert(message) {
     EventBus.$emit('showAlert', {
       message: message,
-      typeClass: 'alert-danger'
+      typeClass: 'danger'
     });
   },
   hideAlert() {

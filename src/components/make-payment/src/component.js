@@ -33,6 +33,7 @@ export default {
         Util.showAlert('Please fill in all details');
       } else {
         Util.hideAlert();
+        Model.showLoader(true);
         console.log(Store.privatekey, this.toAddress, this.amount);
         WalletService.estimateTransfer(Store.privatekey, this.toAddress, this.amount, this.onEstimation.bind(this));
       }

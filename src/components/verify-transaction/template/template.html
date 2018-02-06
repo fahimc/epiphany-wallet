@@ -1,0 +1,24 @@
+<div class="verify-transaction">
+  <section class="hero">
+    <h1>Confirm Transaction</h1>
+  </section>
+  <section>
+    <div class="transaction-info card bg-muted mb-3" style="margin-top: 10px;">
+      <div class="card-body">
+        <h5 class="card-title">Transaction Information</h5>
+        <p><strong>Address</strong></p>
+        <p>{{toAddress}}</p>
+        <p><strong>Amount</strong></p>
+        <p>{{amount}} ENY</p>
+        <p><strong>Transaction Fee</strong></p>
+        <p>{{transactionFee}}</p>
+        <p><strong>Current Ethereum Balance</strong></p>
+        <p>{{currentBalance}}</p>
+        <p><strong>Ethereum Balance After</strong></p>
+        <p>{{balanceAfter}}</p>
+      </div>
+    </div>
+    <p class="error-message">{{errorMessage}}</p>
+    <button type="button" class="btn primary" v-on:click="sendTransaction" v-bind:disabled="buttonDisabled">send</button>
+  </section>
+</div>

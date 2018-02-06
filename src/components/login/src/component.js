@@ -22,6 +22,7 @@ export default {
     onLogin(event) {
       if (!event.error) {
         Store.privatekey = this.privatekey;
+        Model.state.privatekey = this.privatekey;
         Store.balance = event.data.balance;
         Store.address = event.data.address;
         this.$router.push('/home');

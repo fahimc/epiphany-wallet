@@ -12,6 +12,7 @@ export default {
   methods:{
   	goBack(){
   		this.$router.go(-1);
+      Model.showLoader(false);
   	},
     openMenu(){
       this.showMenuClass = 'show';

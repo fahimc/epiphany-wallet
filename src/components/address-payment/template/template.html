@@ -3,26 +3,12 @@
 	<label>to</label>
 	<input v-model="toAddress" type="text" class="" aria-describedby="private key" placeholder="address">
 	<label>amount</label>
-	<input v-model="amount" type="number" class="" aria-describedby="private key" placeholder="amount (ENY)">
-  <div class="transaction-info card bg-muted mb-3" v-bind:class="[transactionClass,transactionShow]" style="margin-top: 10px;">
-    <div class="card-body">
-      <h5 class="card-title">Transaction Information</h5>
-      <p><strong>Address</strong></p>
-      <p>{{toAddress}}</p>
-      <p><strong>Amount</strong></p>
-      <p>{{amount}} ENY</p>
-      <p><strong>Transaction Fee</strong></p>
-      <p>{{transactionFee}}</p>
-      <p><strong>Current Ethereum Balance</strong></p>
-      <p>{{currentBalance}}</p>
-      <p><strong>Ethereum Balance After</strong></p>
-      <p>{{balanceAfter}}</p>
-    </div>
-  </div>
+	<input v-model="amount" type="number" class="" aria-describedby="private key" placeholder="ENY">
   <div class="form-group">
-    <button type="button" class="btn btn-info verify-button"  v-bind:class="formVerifyButtonClass" v-on:click="checkCost" v-bind:disabled="verifyButtonDisabled">verify</button>
-    <button type="button" class="btn btn-info form-back-button" v-bind:class="formBackButtonClass" v-on:click="showForm">back</button>
-    <button type="button" class="btn btn-info send-button" v-on:click="sendTransaction" v-bind:class="formSendButtonClass" v-bind:disabled="sendButtonDisabled">send</button>
+    <button type="button" class="btn primary-inverted "  v-on:click="checkCost">verify</button>
+    <!--
+    
+-->
   </div>
 </div>
 
