@@ -15,7 +15,6 @@ const Server = {
     app.use(bodyParser.json());
     this.setRoutes();
     this.start();
-
   },
   setRoutes() {
     app.use(this.onBeforeRequest.bind(this));

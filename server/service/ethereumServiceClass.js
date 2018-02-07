@@ -133,7 +133,7 @@ class EthereumService {
     }).catch((err) => { if (callback) callback() });
   }
   */
-  getTransactionList(account, transaction, callback) {
+  getTransactionListFromAccount(account, transaction, callback) {
     let network = this.NETWORK == EthereumModel.NETWORK.TEST ? 'rinkeby' : 'api';
     getJSON(`http://${network}.etherscan.io/api?module=account&action=txlist&address=${account}&startblock=0&endblock=99999999&sort=asc&apikey=${EthereumModel.ETHERSCAN_API}`, (error, response) => {
       let collection = [];
@@ -155,15 +155,35 @@ class EthereumService {
       }
     });
   }
-  hex_to_ascii(str1)
- {
-  var hex  = str1.toString();
-  var str = '';
-  for (var n = 0; n < hex.length; n += 2) {
-    str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
+  getTransactionList(account, transaction, callback) {
+    let network = this.NETWORK == EthereumModel.NETWORK.TEST ? 'rinkeby' : 'api';
+    getJSON(`http://${network}.etherscan.io/api?module=account&action=txlist&address=${transaction}&startblock=0&endblock=999999999999&sort=asc&apikey=${EthereumModel.ETHERSCAN_API}`, (error, response) => {
+      let collection = [];
+      if (!error && response.result) {
+        
+        response.result.forEach((item) => {
+          //if (item.to.toUpperCase() === account.toUpperCase()||item.from.toUpperCase() === account.toUpperCase()) {
+            //item.type = item.to.toUpperCase() === transaction.toUpperCase() ? 'SENT' : 'RECEIVED';
+            item.data = abiDecoder.decodeMethod(item.input);
+            if (!item.data) return;
+            item.input = '';
+            if(item.data.params && item.data.params[0] && item.data.params[0].name == '_to' && item.data.params[0].value.toUpperCase() === account.toUpperCase())
+            {
+              item.type = 'RECEIVED';
+              collection.push(item);
+            }else if (item.from.toUpperCase() === account.toUpperCase())
+            {
+              item.type = 'SENT';
+              collection.push(item);
+            }
+        });
+        collection.sort(function(x, y) {
+          return new Date(y.timeStamp*1000) - new Date(x.timeStamp*1000);
+        });
+        if(callback)callback(collection);
+      }
+    });
   }
-  return str;
- }
   onBalance(callback, wallet, data) {
     if (!data[0]) callback({
       error: 'server error. Please try again'
