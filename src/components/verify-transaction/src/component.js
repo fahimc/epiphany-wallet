@@ -18,7 +18,7 @@ export default {
       if (Model.state.newTransactionData.sent) return;
       if (this.buttonDisabled) return;
       Model.state.newTransactionData.sent = true;
-      WalletService.sendTransfer(Store.privatekey, this.toAddress, this.amount, this.onTransferSent.bind(this));
+      WalletService.sendTransfer(Model.state.privateKey, this.toAddress, this.amount, this.onTransferSent.bind(this));
       console.log('send')
     },
     onTransferSent(event) {

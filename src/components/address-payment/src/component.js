@@ -18,8 +18,7 @@ export default {
       } else {
         Util.hideAlert();
         Model.showLoader(true);
-        console.log(Model.state.privatekey, this.toAddress, this.amount);
-        WalletService.estimateTransfer(Model.state.privatekey, this.toAddress, this.amount, this.onEstimation.bind(this));
+        WalletService.estimateTransfer(Model.state.privateKey, this.toAddress, this.amount, this.onEstimation.bind(this));
       }
     },
     onEstimation(event) {

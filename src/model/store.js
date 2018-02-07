@@ -9,7 +9,12 @@ let store = {
     privateKey:'',
     network:'main',
   },
-  IS_DEVELOPMENT_MODE:true
+  IS_DEVELOPMENT_MODE:true,
+  LIVE_SERVICE_URL:'//eny4.co.uk',
+  LOCAL_SERVICE_URL:'//localhost:3000',
+  SERVICE_URL(){
+    return this.IS_DEVELOPMENT_MODE ? this.LOCAL_SERVICE_URL : this.LIVE_SERVICE_URL;
+  }
 }
 export default new Vue({
   data: store,

@@ -7,15 +7,17 @@ const EthereumServiceClass = require('./server/service/ethereumServiceClass.js')
 
 const Server = {
   port:8080,
-  DEV:false,
+  DEV:true,
   init() {
     if(this.DEV)this.port = 3000;
     EthereumService.init();
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
-    app.use('/', letsencrypt.middleware());
     this.setRoutes();
     this.start();
+
+    let ethereumService = new EthereumServiceClass('rinkeby'); 
+    ethereumService.getTransactionListNew('0xeDDf29Fa1fb8ADcbaCF1Ef3691604Bdb65341Ac6', ethereumService.EPIPHANY_CONTRACT);
   },
   setRoutes() {
     app.use(this.onBeforeRequest.bind(this));
