@@ -69,8 +69,9 @@ class EthereumService {
       this.provider = this.providers.getDefaultProvider();
       this.EPIPHANY_CONTRACT = EthereumModel.EPIPHANY_CONTRACT;
     } else {
-      console.log(this.NETWORK, 'network api');
+      console.log(this.NETWORK, 'test network api');
       TokenABI = require('../data/eny_abi_test.json');
+      console.log(TokenABI)
       EtherScan = EtherScanAPI.init(EthereumModel.ETHERSCAN_API, this.NETWORK);
       this.provider = new this.providers.EtherscanProvider(this.NETWORK);
       this.EPIPHANY_CONTRACT = EthereumModel.TEST_EPIPHANY_CONTRACT;
@@ -107,7 +108,6 @@ class EthereumService {
 
   }
   getTransactionList(account, transaction, callback) {
-    console.log(EtherScan);
     EtherScan.account.txlist(transaction).then((data) => {
       if (data.result) {
         let epiphanyCollection = [];
@@ -140,9 +140,9 @@ class EthereumService {
         response.result.forEach((item) => {
           if (item.contractAddress.toUpperCase() === transaction.toUpperCase()) {
             item.data = abiDecoder.decodeMethod(item.input);
-            console.log(item.input);
-            if (!item.data) return;
-            item.input = '';
+            console.log(item.data);
+            //if (!item.data) return;
+           // item.input = '';
             collection.push(item);
           }
         });

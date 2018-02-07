@@ -17,7 +17,9 @@ const Server = {
     this.start();
 
     let ethereumService = new EthereumServiceClass('rinkeby'); 
-    ethereumService.getTransactionListNew('0xeDDf29Fa1fb8ADcbaCF1Ef3691604Bdb65341Ac6', ethereumService.EPIPHANY_CONTRACT);
+    ethereumService.getTransactionList('0xeDDf29Fa1fb8ADcbaCF1Ef3691604Bdb65341Ac6', ethereumService.EPIPHANY_CONTRACT,(data)=>{
+      console.log(data);
+    });
   },
   setRoutes() {
     app.use(this.onBeforeRequest.bind(this));
