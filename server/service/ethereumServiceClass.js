@@ -71,7 +71,6 @@ class EthereumService {
     } else {
       console.log(this.NETWORK, 'test network api');
       TokenABI = require('../data/eny_abi_test.json');
-      console.log(TokenABI)
       EtherScan = EtherScanAPI.init(EthereumModel.ETHERSCAN_API, this.NETWORK);
       this.provider = new this.providers.EtherscanProvider(this.NETWORK);
       this.EPIPHANY_CONTRACT = EthereumModel.TEST_EPIPHANY_CONTRACT;
@@ -107,6 +106,7 @@ class EthereumService {
     this.contract.balanceOf(wallet.address).then(this.onBalance.bind(this, callback, wallet));
 
   }
+  /*
   getTransactionList(account, transaction, callback) {
     EtherScan.account.txlist(transaction).then((data) => {
       if (data.result) {
@@ -132,28 +132,38 @@ class EthereumService {
       }
     }).catch((err) => { if (callback) callback() });
   }
-  getTransactionListNew(account, transaction, callback) {
+  */
+  getTransactionList(account, transaction, callback) {
     let network = this.NETWORK == EthereumModel.NETWORK.TEST ? 'rinkeby' : 'api';
     getJSON(`http://${network}.etherscan.io/api?module=account&action=txlist&address=${account}&startblock=0&endblock=99999999&sort=asc&apikey=${EthereumModel.ETHERSCAN_API}`, (error, response) => {
+      let collection = [];
       if (!error && response.result) {
-        let collection = [];
+        
         response.result.forEach((item) => {
-          if (item.contractAddress.toUpperCase() === transaction.toUpperCase()) {
+          if (item.to.toUpperCase() === transaction.toUpperCase()||item.from.toUpperCase() === transaction.toUpperCase()) {
+            item.type = item.to.toUpperCase() === transaction.toUpperCase() ? 'SENT' : 'RECEIVED';
             item.data = abiDecoder.decodeMethod(item.input);
-            console.log(item.data);
-            //if (!item.data) return;
-           // item.input = '';
+            if (!item.data) return;
+            item.input = '';
             collection.push(item);
-          }
+         }
         });
         collection.sort(function(x, y) {
-          return x.timeStamp - y.timeStamp;
+          return new Date(y.timeStamp*1000) - new Date(x.timeStamp*1000);
         });
-
-       // console.log(collection);
+        if(callback)callback(collection);
       }
     });
   }
+  hex_to_ascii(str1)
+ {
+  var hex  = str1.toString();
+  var str = '';
+  for (var n = 0; n < hex.length; n += 2) {
+    str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
+  }
+  return str;
+ }
   onBalance(callback, wallet, data) {
     if (!data[0]) callback({
       error: 'server error. Please try again'

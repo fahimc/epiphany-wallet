@@ -7,7 +7,7 @@ const EthereumServiceClass = require('./server/service/ethereumServiceClass.js')
 
 const Server = {
   port:8080,
-  DEV:true,
+  DEV:false,
   init() {
     if(this.DEV)this.port = 3000;
     EthereumService.init();
@@ -16,10 +16,6 @@ const Server = {
     this.setRoutes();
     this.start();
 
-    let ethereumService = new EthereumServiceClass('rinkeby'); 
-    ethereumService.getTransactionList('0xeDDf29Fa1fb8ADcbaCF1Ef3691604Bdb65341Ac6', ethereumService.EPIPHANY_CONTRACT,(data)=>{
-      console.log(data);
-    });
   },
   setRoutes() {
     app.use(this.onBeforeRequest.bind(this));

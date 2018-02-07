@@ -27,8 +27,8 @@ export default {
       let network = Store.network == 'test' ? 'rinkeby.' : '';
       if(!event.data)return;
       event.data.forEach((item) => {
-        if(!item.data)return;
-        console.log(item.data.params[1].value);
+        if(!item.data||!item.data.params||!item.data.params[1])return;
+        console.log(item.data);
         let obj = {
           date: Util.formatDate(new Date(item.timeStamp * 1000)),
           transfer: (item.type == 'SENT' ? '-' : '') +  Util.currencyFormatted(Number(item.data.params[1].value)),

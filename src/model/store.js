@@ -9,7 +9,7 @@ let store = {
     privateKey:'',
     network:'main',
   },
-  IS_DEVELOPMENT_MODE:true,
+  IS_DEVELOPMENT_MODE:false,
   LIVE_SERVICE_URL:'//eny4.co.uk',
   LOCAL_SERVICE_URL:'//localhost:3000',
   SERVICE_URL(){
