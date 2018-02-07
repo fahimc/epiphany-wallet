@@ -14,6 +14,7 @@ export default {
     checkCost() {
       if (!this.toAddress || !this.amount) {
         Util.showAlert('Please fill in all details');
+        Model.showLoader(false);
       } else {
         Util.hideAlert();
         Model.showLoader(true);
@@ -25,6 +26,7 @@ export default {
       console.log('onEstimation', event);
       if (event.error) {
         Util.showAlert('Something went wrong. Please try again.');
+        Model.showLoader(false);
         return;
       }
       Model.state.newTransactionData  = event.data;

@@ -19,7 +19,7 @@
     padding-top: 50px;
     padding-left: $gutterPadding;
     padding-right: $gutterPadding;
-    background: url(/static/img/poly.jpg);
+    background: $primaryBlue url(/static/img/poly.jpg);
     padding-bottom: 20px;
     flex-direction: row;
   }

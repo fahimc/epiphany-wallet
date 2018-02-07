@@ -1,0 +1,11 @@
+@import '../../app/style/core/core';
+.transaction-success {
+  text-align: center;
+  padding-top: 50px;
+  background-color: $primaryBlue;
+  height: 100%;
+  color: $primaryTextColor;
+  padding-left: $gutterPadding;
+  padding-right: $gutterPadding;
+  font-family: 'Open Sans', sans-serif;
+}

@@ -7,6 +7,7 @@ import RequestPayment from '@/components/request-payment/request-payment';
 import NewWallet from '@/components/new-wallet/new-wallet';
 import AddressPayment from '@/components/address-payment/address-payment';
 import VerifyTransaction from '@/components/verify-transaction/verify-transaction';
+import TransactionSuccess from '@/components/transaction-success/transaction-success';
 import Store from '../model/model.js';
 import Model from '../model/store';
 
@@ -47,6 +48,11 @@ const router = new Router({
       path: '/verify-transaction',
       name: 'VerifyTransaction',
       component: VerifyTransaction
+    },
+    {
+      path: '/transaction-success',
+      name: 'TransactionSuccess',
+      component: TransactionSuccess
     }
   ]
 });

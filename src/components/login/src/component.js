@@ -51,6 +51,7 @@ export default {
     networkChanged(data){
       console.log('networkChanged',this.network);
       Store.network = this.network;
+      Model.state.network = this.network;
     }
   },
   mounted() {},

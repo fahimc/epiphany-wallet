@@ -7,8 +7,9 @@ let store = {
     currentPriceUSD:0.5,
     newTransactionData:null,
     privateKey:'',
+    network:'main',
   },
-  IS_DEVELOPMENT_MODE:false
+  IS_DEVELOPMENT_MODE:true
 }
 export default new Vue({
   data: store,
