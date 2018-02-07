@@ -60,6 +60,7 @@ class EthereumService {
   }
   initContract() {
     this.contract = new ethers.Contract(this.EPIPHANY_CONTRACT, TokenABI, this.provider);
+    console.log(this.contract);
   }
   setNetwork() {
     this.providers = ethers.providers;

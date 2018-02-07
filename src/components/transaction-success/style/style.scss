@@ -8,4 +8,10 @@
   padding-left: $gutterPadding;
   padding-right: $gutterPadding;
   font-family: 'Open Sans', sans-serif;
+
+  section.hide{
+    font-family: 'Open Sans', sans-serif;
+  	display: none;
+  	padding: 20px;
+  }
 }

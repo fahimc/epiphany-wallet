@@ -33,9 +33,9 @@ export default {
   created() {
     Model.showLoader(false);
     if (Model.state.newTransactionData) {
-      this.currentBalance = Model.state.newTransactionData.balance + ' ETH';
-      this.transactionFee = Model.state.newTransactionData.gasCostInEther + ' ETH';
-      this.balanceAfter = Model.state.newTransactionData.balanceAfter + ' ETH';
+      this.currentBalance = Model.state.newTransactionData.balance + ' eth';
+      this.transactionFee = Model.state.newTransactionData.gasCostInEther + ' eth';
+      this.balanceAfter = Model.state.newTransactionData.balanceAfter + ' eth';
       this.toAddress = Model.state.newTransactionData.toAddress;
       this.amount = Model.state.newTransactionData.amount;
       if (!Model.state.newTransactionData.status) {
@@ -52,7 +52,6 @@ export default {
 
   },
   mounted() {
-    // var element = document.querySelector('.transaction-info');
-    // html2pdf(element);
+  
   }
 };

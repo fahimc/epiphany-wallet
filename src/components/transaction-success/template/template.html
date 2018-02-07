@@ -1,8 +1,23 @@
 <div class="transaction-success">
-	<h1>Success!</h1>
-	<p>The transaction is been made and is queued for completion.</p>
-	<p>You can keep track of its progress here</p>
-	<a v-bind:href="getHash" target="_blank"><button class="primary-inverted">transaction info</button></a>
-	<a href="#/home" ><button class="primary-inverted">home</button></a>
+  <h1>Success!</h1>
+  <p>The transaction is been made and is queued for completion.</p>
+  <p>You can keep track of its progress here</p>
+  <a v-bind:href="getHash" target="_blank">
+    <button class="primary-inverted">transaction info</button>
+  </a>
+  <button class="primary-inverted" v-on:click="createdPDF">download transaction receipt</button>
+  <a href="#/home">
+    <button class="primary-inverted">home</button>
+  </a>
+  <section class="transaction-pdf hide">
+  	<img class="logo" src="static/img/epiphany-logo.png">
+    <h5 class="card-title"><strong>Transaction Information</strong></h5>
+    <p>This is a receipt for a epiphany coin transaction</p>
+    <p><strong>Transaction hash:</strong> {{this.model.newTransactionData.sentTransactionHash}}</p>
+    <p><strong>Senders address:</strong> {{this.model.address}}</p>
+    <p><strong>Transaction date:</strong> {{date}}</p>
+    <p><strong>Receivers address: </strong> {{this.model.newTransactionData.toAddress}}</p>
+    <p><strong>Amount sent:</strong> {{this.model.newTransactionData.amount}} eny</p>
+    <p><strong>Transaction fee: </strong> {{this.model.newTransactionData.gasCostInEther}} eth</p>
+  </section>
 </div>
-
