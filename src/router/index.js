@@ -9,6 +9,7 @@ import AddressPayment from '@/components/address-payment/address-payment';
 import VerifyTransaction from '@/components/verify-transaction/verify-transaction';
 import TransactionSuccess from '@/components/transaction-success/transaction-success';
 import QRCodePreview from '@/components/qr-code-preview/qr-code-preview';
+import ReadQRCode from '@/components/read-qr-code/read-qr-code';
 import Store from '../model/model.js';
 import Model from '../model/store';
 
@@ -59,6 +60,11 @@ const router = new Router({
       path: '/qr-code-preview',
       name: 'QRCodePreview',
       component: QRCodePreview
+    },
+    {
+      path: '/read-qr-code',
+      name: 'ReadQRCode',
+      component: ReadQRCode
     }
   ]
 });
