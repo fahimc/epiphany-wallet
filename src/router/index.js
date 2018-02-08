@@ -8,6 +8,7 @@ import NewWallet from '@/components/new-wallet/new-wallet';
 import AddressPayment from '@/components/address-payment/address-payment';
 import VerifyTransaction from '@/components/verify-transaction/verify-transaction';
 import TransactionSuccess from '@/components/transaction-success/transaction-success';
+import QRCodePreview from '@/components/qr-code-preview/qr-code-preview';
 import Store from '../model/model.js';
 import Model from '../model/store';
 
@@ -53,6 +54,11 @@ const router = new Router({
       path: '/transaction-success',
       name: 'TransactionSuccess',
       component: TransactionSuccess
+    },
+    {
+      path: '/qr-code-preview',
+      name: 'QRCodePreview',
+      component: QRCodePreview
     }
   ]
 });

@@ -1,12 +1,12 @@
 import Store from '../../../model/model.js';
 import {EventBus} from '../../../event/event.js';
+import Model from '../../../model/store';
 
 export default {
   name: 'request-payment',
   data() {
     return {
-      amount: '',
-      qrShow:''
+      amount: ''
     }
   },
   methods: {
@@ -22,18 +22,17 @@ export default {
           typeClass: 'danger'
         });
         return;
+      }else{
+        Model.state.requestAmount = this.amount;
+        this.$router.push('/qr-code-preview');
       }
-      this.qrShow = 'show';
-      new QRCode(document.getElementById("qrcode"), {
-        text: `${Store.address}__${this.amount}`,
-        width: 300,
-        height: 300,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
-      });
-      document.getElementById("qrcode").classList.add('show');
+      
+      
     }
+  },
+  created(){
+    Model.state.navTitle = 'request payment';
+    Model.setNavbarState(true,false,true);
   },
   mounted() {
 

@@ -1,16 +1,32 @@
-input, input.form-control {
-	margin: auto;
-	width:$formControlWidth;
-	border-radius:$formControlBorderRadius;
-	background: transparent;
-	border: 1px solid $darkBorderColor; 
-	&:-webkit-autofill,
-	&:-webkit-autofill:hover,
-	&:-webkit-autofill:focus,
-	&:-webkit-autofill:active {
-	  background-color: transparent;
+input,
+input.form-control {
+  margin: auto;
+  width: $formControlWidth;
+  border-radius: $formControlBorderRadius;
+  background: transparent;
+  border: 1px solid $darkBorderColor;
+  &.inverted {
+    border: 1px solid #1080b1;
+    background-color: #1290c7;
+    box-sizing: border-box;
+    border-radius: 20px;
+    color: #fff;
+    padding: 2px 10px;
+    margin-top: 10px;
+    &::placeholder {
+      text-align: center;
+      color: #fff; //opacity: 0.8;
+      background-color: #1290c7;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+  }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    background-color: transparent;
     transition: background-color 5000s ease-in-out 0s;
   }
-	@include desktop();
-	
+  @include desktop();
 }

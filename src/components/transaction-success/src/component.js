@@ -30,5 +30,7 @@ export default {
       });
     }
   },
-  created() {}
+  created() {
+    Model.setNavbarState(false);
+  }
 };

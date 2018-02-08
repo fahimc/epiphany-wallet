@@ -1,5 +1,5 @@
 @import '../../app/style/core/core';
-.address-payment {
+.qr-code-preview {
   text-align: center;
   padding-top: 50px;
   background-color: $primaryBlue;
@@ -8,8 +8,17 @@
   padding-left: $gutterPadding;
   padding-right: $gutterPadding;
   font-family: 'Open Sans', sans-serif;
-
-  label{
-  	display: block;
+  #qrcode {
+    display: block;
+    background-color: #FFF;
+    margin: auto;
+    width: 90%;
+    max-width: 340px;
+    padding: 20px;
+  }
+  small {
+    word-wrap: break-word;
+    line-height: 11px;
+    font-size: 12px;
   }
 }

@@ -24,7 +24,9 @@ export default {
         Store.privatekey = this.privatekey;
         Model.state.privateKey = this.privatekey;
         Store.balance = event.data.balance;
+        Model.state.balance = event.data.balance;
         Store.address = event.data.address;
+        Model.state.address = event.data.address;
         this.$router.push('/home');
       } else {
         this.showAlert('Cannot Connect to network. Please try again.');

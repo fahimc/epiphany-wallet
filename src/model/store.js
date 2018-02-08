@@ -8,6 +8,8 @@ let store = {
     newTransactionData:null,
     privateKey:'',
     network:'main',
+    address:'',
+    balance:0
   },
   IS_DEVELOPMENT_MODE:false,
   LIVE_SERVICE_URL:'//eny4.co.uk',

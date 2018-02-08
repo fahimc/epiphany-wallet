@@ -1,26 +1,12 @@
+@import '../../app/style/core/core';
 .request-payment{
-  text-align:center;
-  #qrcode{
-  	display: none;
-  	background-color:#FFF;
-     margin: auto;
-    width: 340px;
-    padding:20px;
-    &.show{
-    	display: block;
-    }
-  }
-  .form-group{
-  	margin: auto;
-  }
-  input {
-    text-align: center;
-    color: #fff;
-    &[type=number]::-webkit-inner-spin-button,
-    &[type=number]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-  }
+  text-align: center;
+  padding-top: 50px;
+  background-color: $primaryBlue;
+  height: 100%;
+  color: $primaryTextColor;
+  padding-left: $gutterPadding;
+  padding-right: $gutterPadding;
+  font-family: 'Open Sans', sans-serif;
 }
 

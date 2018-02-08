@@ -1,20 +1,8 @@
 <div class="request-payment">
- <nav class="navbar navbar-dark bg-dark">
-    <a class="wrapper" href="#" v-on:click="goBack"><i class="fas fa-chevron-left text-light"></i></a>
-    <a class="navbar-brand" href="#">
-    <span>request payment</span>
-    </a>
-  </nav>
-  <br>
-  <p class="text-light">Generate a QR Code to request a payment from someone.</p>
-  <form class="form-inline text-light">
-  <div class="form-group">
-      <input v-model="amount" type="number" class="form-control text-light" id="amount" aria-describedby="amount" placeholder="amount">
+  <h1>Generate a QR code to request a payment from someone.</h1>
+      <input v-model="amount" type="number" class="inverted" id="amount" aria-describedby="amount" placeholder="amount">
       <label class="text-light">ENY</label>
-    </div>
-</form>
-  <button  type="button" class="btn btn-info generate-button" v-on:click="generate">generate</button>
-  <br><br>
-  <div id="qrcode" v-bind:class="[qrShow]"></div>
+  <button  type="button" class="btn primary-inverted generate-button" v-on:click="generate">generate</button>
+  
 </div>
 </div>
