@@ -16,6 +16,7 @@ export default {
   methods: {
     login(event) {
       if (this.privatekey) {
+        this.privatekey = this.privatekey.trim();
         WalletService.login(this.privatekey.substring(2, this.privatekey.length), this.onLogin.bind(this));
       }
     },
