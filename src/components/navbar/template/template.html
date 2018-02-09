@@ -8,22 +8,27 @@
   <div class="title"><span>{{model.navTitle}}</span></div>
   <div class="menu-panel" v-bind:class="showMenuClass">
     <section class="heading">
-    	<label>menu</label>
+      <label>menu</label>
       <button class="close-button" v-on:click="onHideMenu">
         <i class="fas fa-times"></i>
       </button>
     </section>
     <section class="list">
-    	<a href="#/make-payment" v-on:click="onHideMenu">
-    		<div>
-    			<span>make a payment</span>
-    		</div>
-    	</a>
-    	<a href="#/request-payment" v-on:click="onHideMenu">
-    		<div>
-    			<span>request a payment</span>
-    		</div>
-    	</a>
+      <a href="#/make-payment" v-on:click="onHideMenu">
+        <div>
+          <span>make a payment</span>
+        </div>
+      </a>
+      <a href="#/request-payment" v-on:click="onHideMenu">
+        <div>
+          <span>request a payment</span>
+        </div>
+      </a>
+      <a href="https://goo.gl/forms/18GX3sFmbp0cRsGV2" target="_blank" v-on:click="onHideMenu">
+        <div>
+          <span>report issue</span>
+        </div>
+      </a>
     </section>
   </div>
 </div>
